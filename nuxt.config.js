@@ -16,6 +16,12 @@ export default {
     css: [
         '~/assets/stylesheet/scss/main.scss'
     ],
+    styleResources: {
+        scss: [
+            '~/assets/stylesheet/scss/mixins.scss',
+            '~/assets/stylesheet/scss/variables.scss'
+        ]
+    },
     plugins: [],
     buildModules: [],
     modules: [

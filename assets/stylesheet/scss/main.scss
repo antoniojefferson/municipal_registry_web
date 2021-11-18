@@ -1,0 +1,16 @@
+html, body {
+    font-family: Open Sans,sans-serif;
+	color: #303337;
+}
+
+#__nuxt {
+    height: 100vh;
+
+    #__layout {
+        height: inherit;
+
+        .main {
+            height: inherit;
+        }
+    }
+}

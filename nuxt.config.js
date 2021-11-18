@@ -18,5 +18,8 @@ export default {
     ],
     plugins: [],
     buildModules: [],
-    modules: []
+    modules: [
+        'bootstrap-vue/nuxt',
+        '@nuxtjs/style-resources',
+    ]
 }

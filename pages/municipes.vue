@@ -1,8 +1,8 @@
 <template>
-    <h1>Index Page</h1>
+    <h1>Municipes Page</h1>
 </template>
 <script>
 export default {
-    name: 'index',
+    name: 'municipes',
 }
 </script>

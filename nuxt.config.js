@@ -21,5 +21,15 @@ export default {
     modules: [
         'bootstrap-vue/nuxt',
         '@nuxtjs/style-resources',
+        [
+            'nuxt-fontawesome', {
+                imports: [
+                    {
+                        set: '@fortawesome/free-solid-svg-icons',
+                        icons: ['fas']
+                    }
+                ]
+            }
+        ]
     ]
 }

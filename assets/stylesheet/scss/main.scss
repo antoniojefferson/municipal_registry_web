@@ -1,8 +1,9 @@
-@import 'button';
+@import 'button', 'fonts', 'inputs';
 
 html, body {
     font-family: Open Sans,sans-serif;
-	color: #303337;
+    background-color: $background;
+	color: $default-text-color;
 }
 
 #__nuxt {
@@ -15,4 +16,8 @@ html, body {
             height: inherit;
         }
     }
+}
+
+.mt--6 {
+    margin-top: -4.5rem !important;
 }

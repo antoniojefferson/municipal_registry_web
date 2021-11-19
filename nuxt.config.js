@@ -1,6 +1,10 @@
 export default {
     mode: 'universal',
-
+    server: {
+        port: 8000,
+        host: '0.0.0.0',
+        timing: false
+    },
     head: {
         title: 'Registro de Municípios',
         meta: [

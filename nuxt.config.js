@@ -30,6 +30,7 @@ export default {
     buildModules: [],
     modules: [
         'bootstrap-vue/nuxt',
+        '@nuxtjs/axios',
         '@nuxtjs/style-resources',
         [
             'nuxt-fontawesome', {
@@ -41,5 +42,8 @@ export default {
                 ]
             }
         ]
-    ]
+    ],
+    axios: {
+        baseURL: 'http://localhost:3000'
+    }
 }

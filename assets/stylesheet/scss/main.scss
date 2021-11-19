@@ -1,7 +1,7 @@
 @import 'button', 'fonts', 'inputs';
 
 html, body {
-    font-family: Open Sans,sans-serif;
+    font-family: sans-serif;
     background-color: $background;
 	color: $default-text-color;
 }
@@ -20,4 +20,48 @@ html, body {
 
 .mt--6 {
     margin-top: -4.5rem !important;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.media {
+    width: 45px;
+    height: 45px;
+    @include flx-center-childs;
+
+    &.mr-10 {
+        margin-right: 10px;
+    }
+
+    img {
+        width: inherit;
+        border-radius: 50%;
+    }
+}
+
+.text-primary {
+    color: $primary !important;
+}
+.text-secondary {
+    color: $secondary !important;
+}
+.text-success {
+    color: $success !important;
+}
+.text-info {
+    color: $info !important;
+}
+.text-warning {
+    color: $warning !important;
+}
+.text-danger {
+    color: $danger !important;
+}
+.text-light {
+    color: $light !important;
+}
+.text-dark {
+    color: $dark !important;
 }

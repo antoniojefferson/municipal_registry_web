@@ -6,30 +6,11 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>#</th>
-                    <th>PROJECT</th>
-                    <th>Last</th>
-                    <th>Handle</th>
+                    <th v-for="header in headers" :key="header">{{ header }}</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th>1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th>2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th>3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                </tr>
+                <slot></slot>
             </tbody>
         </table>
     </div>
@@ -41,6 +22,11 @@ export default {
         title: {
             type: String,
             description: 'Table title or identification of what type of data is being presented in the table'
+        },
+        headers: {
+            type: Array,
+            default: [],
+            description: 'List of titles for headers'
         }
     }
 }
@@ -72,13 +58,16 @@ export default {
         th, td {
             padding-left: 1.5rem !important;
             padding-right: 1.5rem !important;
+            vertical-align: middle;
+            color: #525f7f;
         }
 
         tbody {
             border-top: none !important;
+            @include fontSize(15px);
 
             th, td {
-                padding: 1rem 1.5rem !important;
+                padding: .7rem 1.5rem !important;
             }
         }
     }

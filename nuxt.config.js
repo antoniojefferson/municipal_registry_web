@@ -54,6 +54,6 @@ export default {
         ]
     ],
     axios: {
-        baseURL: development ? 'http://localhost:3000' : ''
+        baseURL: development ? 'http://localhost:3000' : 'https://municipal-registry.herokuapp.com'
     }
 }

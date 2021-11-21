@@ -1,5 +1,8 @@
+let development = process.env.NODE_ENV != 'production';
+
 export default {
-    mode: 'universal',
+    ssr: false,
+    
     server: {
         port: 8000,
         host: '0.0.0.0',
@@ -16,9 +19,11 @@ export default {
                 content: process.env.npm_package_description || ''
             }
         ],
+        link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
     },
     css: [
-        '~/assets/stylesheet/scss/main.scss'
+        '~/assets/stylesheet/scss/main.scss',
+        'vue-datetime/dist/vue-datetime.css'
     ],
     styleResources: {
         scss: [
@@ -26,7 +31,12 @@ export default {
             '~/assets/stylesheet/scss/variables.scss'
         ]
     },
-    plugins: [],
+    plugins: [
+        '~/plugins/cns-validation.js',
+        '~/plugins/email-validation.js',
+        '~/plugins/phone-validation.js',
+        '~/plugins/v-mask.js',
+    ],
     buildModules: [],
     modules: [
         'bootstrap-vue/nuxt',
@@ -44,6 +54,6 @@ export default {
         ]
     ],
     axios: {
-        baseURL: 'http://localhost:3000'
+        baseURL: development ? 'http://localhost:3000' : ''
     }
 }

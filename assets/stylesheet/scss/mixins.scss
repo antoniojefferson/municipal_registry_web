@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @mixin for-phone-only {
     @media (max-width: 767.98px) {
         @content;
@@ -23,41 +25,43 @@
 }
 
 @function calculateRem($size) {
-    @return $size / 16px * 1rem;
+    @return math.div($size, 16px) * 1rem;
 }
 
 @mixin fontSize($size) {
     font-size: calculateRem($size);
 }
 
-@mixin button-effect($color, $text-color: '') {
-    background-color: $color;
-    transition: all .3s;
+// @mixin button-effect($color, $text-color: '') {
+//     background-color: $color;
+//     transition: all .3s;
 
-    &:hover {
-        background-color: $color;
-        box-shadow: 0 5px 4px rgb(50 50 93 / 11%), 0 3px 6px rgb(0 0 0 / 8%) !important;
-    }
+//     &:hover {
+//         background-color: $color;
+//         box-shadow: 0 5px 4px rgb(50 50 93 / 11%), 0 3px 6px rgb(0 0 0 / 8%) !important;
+//     }
 
-    &:focus {
-        background-color: $color;
-    }
+//     &:focus {
+//         background-color: $color;
+//     }
 
-    &:hover, &:focus {
-        @if $text-color != '' {
-            color: $text-color;
-        } @else {
-            color: white;
-        }
-    }
+//     &:hover, &:focus {
+//         @if $text-color != '' {
+//             color: $text-color;
+//         } @else {
+//             color: white;
+//         }
+//     }
+// }
 
-    &-outline {
-        border: 1px solid $color;
-        color: $color;
+// @mixin outline-btn {
+//     &-outline {
+//         border: 1px solid $color;
+//         color: $color;
 
-        &:hover, &:focus {
-            background-color: $color;
-            color: white;
-        }
-    }
-}
+//         &:hover, &:focus {
+//             background-color: $color;
+//             color: white;
+//         }
+//     }
+// }

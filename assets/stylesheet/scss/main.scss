@@ -1,4 +1,4 @@
-@import 'button', 'fonts', 'inputs';
+@import 'fonts';
 
 html, body {
     font-family: sans-serif;
@@ -22,9 +22,6 @@ html, body {
     margin-top: -4.5rem !important;
 }
 
-.d-flex {
-    display: flex;
-}
 
 .media {
     width: 45px;
@@ -39,6 +36,52 @@ html, body {
         width: inherit;
         border-radius: 50%;
     }
+}
+
+.vdatetime-input {
+    border-radius: 0.25rem !important;
+    border: 1px solid #ced4da !important;
+
+    &:focus-within {
+        border-color: $primary !important;
+    }
+}
+
+.ml-childrens-10 > *{
+    margin-left: 10px;
+}
+
+.btn-primary {
+    background-color: $primary !important;
+    border-color: $primary !important;
+}
+.btn-secondary {
+    background-color: $secondary !important;
+    border-color: $secondary !important;
+}
+.btn-success {
+    background-color: $success !important;
+    border-color: $success !important;
+}
+.btn-info {
+    background-color: $info !important;
+    border-color: $info !important;
+}
+.btn-warning {
+    background-color: $warning !important;
+    border-color: $warning !important;
+}
+.btn-danger {
+    background-color: $danger !important;
+    border-color: $danger !important;
+}
+.btn-light {
+    background-color: $light !important;
+    border-color: $light !important;
+}
+.btn-dark {
+    background-color: $dark !important;
+    border-color: $dark !important;
 }
 
 .text-primary {

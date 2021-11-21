@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   data-name="Layer 1"
+   width="508.61502"
+   height="322.7543"
+   viewBox="0 0 508.61502 322.75431"
+   version="1.1"
+   id="svg165"
+   sodipodi:docname="task_list.svg"
+   inkscape:version="1.1.1 (eb90963e84, 2021-10-02)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs169" />
+  <sodipodi:namedview
+     id="namedview167"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     width="508.61502px"
+     height="322.7543px"
+     inkscape:zoom="1.2798823"
+     inkscape:cx="227.75531"
+     inkscape:cy="122.27687"
+     inkscape:window-width="1314"
+     inkscape:window-height="704"
+     inkscape:window-x="52"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg165" />
+  <g
+     id="g342"
+     transform="matrix(1.0000039,0,0,1.0000039,0,-64.25224)">
+    <path
+       d="M 736,678.63184 H 351 a 8.50982,8.50982 0 0 1 -8.5,-8.5 V 446 a 8.50951,8.50951 0 0 1 8.5,-8.5 h 385 a 8.50982,8.50982 0 0 1 8.5,8.5 v 224.13184 a 8.51014,8.51014 0 0 1 -8.5,8.5 z"
+       transform="translate(-291,-347.24569)"
+       fill="#e6e6e6"
+       id="path113" />
+    <path
+       d="M 760,710 H 327 V 423.5 a 9.51081,9.51081 0 0 1 9.5,-9.5 h 414 a 9.51081,9.51081 0 0 1 9.5,9.5 z M 329,708 H 758 V 423.5 a 7.5082,7.5082 0 0 0 -7.5,-7.5 h -414 a 7.5082,7.5082 0 0 0 -7.5,7.5 z"
+       transform="translate(-291,-347.24569)"
+       fill="#cccccc"
+       id="path115" />
+    <circle
+       cx="252.5"
+       cy="79.254311"
+       r="4"
+       fill="#e6e6e6"
+       id="circle117" />
+    <path
+       d="M 640,631.06641 H 447 a 8.50982,8.50982 0 0 1 -8.5,-8.5 v -129 a 8.50981,8.50981 0 0 1 8.5,-8.5 h 193 a 8.51013,8.51013 0 0 1 8.5,8.5 v 129 a 8.51014,8.51014 0 0 1 -8.5,8.5 z"
+       transform="translate(-291,-347.24569)"
+       fill="#ffffff"
+       id="path119" />
+    <path
+       d="m 478.75,540.06592 a 8,8 0 1 1 8,-8 8.00917,8.00917 0 0 1 -8,8 z"
+       transform="translate(-291,-347.24569)"
+       fill="#cccccc"
+       id="path121" />
+    <path
+       d="m 478.75,566.06592 a 8,8 0 1 1 8,-8 8.00917,8.00917 0 0 1 -8,8 z"
+       transform="translate(-291,-347.24569)"
+       fill="#6c63ff"
+       id="path123" />
+    <path
+       d="m 478.75,592.06592 a 8,8 0 1 1 8,-8 8.00917,8.00917 0 0 1 -8,8 z"
+       transform="translate(-291,-347.24569)"
+       fill="#6c63ff"
+       id="path125" />
+    <path
+       d="m 516.75,525.56592 a 6.5,6.5 0 0 0 0,13 h 93 a 6.5,6.5 0 0 0 0,-13 z"
+       transform="translate(-291,-347.24569)"
+       fill="#cccccc"
+       id="path127" />
+    <path
+       d="m 516.75,551.56592 a 6.5,6.5 0 0 0 0,13 h 93 a 6.5,6.5 0 0 0 0,-13 z"
+       transform="translate(-291,-347.24569)"
+       fill="#6c63ff"
+       id="path129" />
+    <path
+       d="m 516.75,577.56592 a 6.5,6.5 0 0 0 0,13 h 93 a 6.5,6.5 0 0 0 0,-13 z"
+       transform="translate(-291,-347.24569)"
+       fill="#6c63ff"
+       id="path131" />
+    <path
+       d="M 767.50006,697 H 750 v -3 a 4,4 0 0 0 -4,-4 h -21 a 4,4 0 0 0 -4,4 v 3 h -3 v -3 a 4,4 0 0 0 -4,-4 h -21 a 4,4 0 0 0 -4,4 v 3 h -3 v -3 a 4,4 0 0 0 -4,-4 h -21 a 4,4 0 0 0 -4,4 v 3 h -3 v -3 a 4,4 0 0 0 -4,-4 h -21 a 4,4 0 0 0 -4,4 v 3 h -3 v -3 a 4,4 0 0 0 -4,-4 h -21 a 4,4 0 0 0 -4,4 v 3 h -3 v -3 a 4,4 0 0 0 -4,-4 h -21 a 4,4 0 0 0 -4,4 v 3 h -3 v -3 a 4,4 0 0 0 -4,-4 h -21 a 4,4 0 0 0 -4,4 v 3 h -3 v -3 a 4,4 0 0 0 -4,-4 h -21 a 4,4 0 0 0 -4,4 v 3 h -3 v -3 a 4,4 0 0 0 -4,-4 h -21 a 4,4 0 0 0 -4,4 v 3 h -3 v -3 a 4,4 0 0 0 -4,-4 h -21 a 4,4 0 0 0 -4,4 v 3 h -3 v -3 a 4,4 0 0 0 -4,-4 h -21 a 4,4 0 0 0 -4,4 v 3 h -3 v -3 a 4,4 0 0 0 -4,-4 h -21 a 4,4 0 0 0 -4,4 v 3 h -3 v -3 a 4,4 0 0 0 -4,-4 h -21 a 4,4 0 0 0 -4,4 v 3 H 319.49994 A 28.49994,28.49994 0 0 0 291,725.49994 v 6e-5 a 8.5,8.5 0 0 0 8.5,8.5 h 488 a 8.5,8.5 0 0 0 8.5,-8.5 v -6e-5 A 28.49994,28.49994 0 0 0 767.50006,697 Z"
+       transform="translate(-291,-347.24569)"
+       fill="#3f3d56"
+       id="path163" />
+  </g>
+</svg>

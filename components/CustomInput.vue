@@ -1,19 +1,20 @@
 <template>
-    <div class="form-group" :class="[
-        { 'no-margin' : this.noMargin },
-        { 'wth-100' : this.wth100 },
-    ]">
-        <label v-if="label" :class="labelClasses">
+    <div class="form-group mb-2">
+        <label v-if="label">
             {{ label }}
             <span v-if="required && label">*</span>
         </label>
-        <div class="input-group">
-            <div v-if="this.iconLeft != ''" class="icon" :class="[{ 'rounded': this.rounded }]">
+        <div class="input-group" :class="[
+            { 'input-group__rounded': this.rounded }
+        ]">
+            <div v-if="this.iconLeft != ''" class="input-group__icon-left" :class="[{ 'rounded': this.rounded }]">
                 <font-awesome-icon :icon="['fas', this.iconLeft]" />
             </div>
             <input
                 v-bind="$attrs"
                 v-on="listeners"
+                v-mask="mask"
+                :maxlength="mask ? mask.length.toString() : ''"
                 :type="this.showPassword ? 'text' : this.inputType"
                 class='form-control'
                 :class="[
@@ -27,10 +28,12 @@
                 ]"
                 :placeholder="placeholder || ''"
             />
-            <div v-if="this.iconRight != '' || validIconPassword" class="icon">
+            <div v-if="this.iconRight != '' || validIconPassword" class="input-group__icon-right">
                 <font-awesome-icon @click="handleShowPassword" :icon="['fas', validIconPassword ? this.iconPassword : this.iconRight]" />
             </div>
         </div>
+        <div class="invalid-feedback">{{ helpText }}</div>
+        <!-- <small v-if="helpText" class="form-text" :class="[{ 'text-danger': valid === false },]" >{{ helpText }}</small> -->
     </div>
 </template>
 <script>
@@ -50,6 +53,11 @@ export default {
             type: String,
             default: '',
         },
+        helpText: {
+            type: String,
+            default: '',
+            description: 'Help message created below the field'
+        },
         inputType: {
             type: String,
             default: 'text',
@@ -57,11 +65,12 @@ export default {
         },
         label: {
             type: String,
-            description: "Field identification label"
+            description: 'Field identification label'
         },
-        labelClasses: {
+        mask: {
             type: String,
-            description: "Additional style classes for the label"
+            default: '',
+            description: 'Pattern of characters that the v-mask plugin should convert to string'
         },
         noMargin: {
             type: Boolean,
@@ -71,17 +80,17 @@ export default {
         placeholder: String,
         required: {
             type: Boolean,
-            description: "Whether input is required (adds an asterix *)",
+            description: 'Whether input is required (adds an asterix *)',
         },
         rounded: {
             type: Boolean,
             default: false,
-            description: "Enables the style is rounded",
+            description: 'Enables the style is rounded',
         },
         valid: {
             type: Boolean,
             default: undefined,
-            description: "Whether is valid",
+            description: 'Whether is valid',
         },
         wth100: {
             type: Boolean,
@@ -130,3 +139,59 @@ export default {
     }
 }
 </script>
+<style lang='scss'>
+    .input-group {
+        border-radius: 0.25rem;
+        border: 1px solid #ced4da;
+        transition: all 0.3s;
+
+        &__rounded {
+            border-radius: calculateRem(70px) !important;
+        }
+
+        &__icon-left, &__icon-right {
+            width: calculateRem(33px);
+            height: inherit;
+            @include fontSize(16px);
+            display: flex;
+            align-items: center;
+
+            &.rounded {
+                border-radius: 70px 0 0 70px !important;
+            }
+        }
+
+        &__icon-left {
+            justify-content: end;
+            padding-right: calculateRem(2px);
+        }
+
+        &__icon-right {
+            justify-content: start;
+            padding-left: calculateRem(3px);
+        }
+
+        &:focus-within {
+            box-shadow: none !important;
+            border-color: $primary !important;
+        }
+
+    }
+
+    input {
+        color: $default-text-color !important;
+        border: none !important;
+
+        &.rounded {
+            border-radius: calculateRem(70px) !important;
+        }
+
+        &:focus {
+            box-shadow: none !important;
+        }
+    }
+
+    /* small {
+        font-size: 80% !important;
+    } */
+</style>

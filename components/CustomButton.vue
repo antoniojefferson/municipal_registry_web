@@ -3,13 +3,10 @@
         :is="tag"
         :type="tag === 'button' ? 'button' : type"
         class="btn"
-        :class="[
-            ...classes,
-            ...customClasses,
-        ]"
+        :class="classes"
         @click="handleClick"
         >
-        <div v-if="this.icon != ''" class="icon">
+        <div v-if="this.icon != ''" class="btn__icon">
             <font-awesome-icon :icon="['fas', this.icon]" />
         </div>
         <slot>
@@ -21,11 +18,6 @@
 export default {
     name: 'custom-button',
     props: {
-        customClasses: {
-            type: Array,
-            default: [],
-            description: 'Additional classes straight to the component',
-        },
         icon: {
             type: String,
             default: '',
@@ -62,16 +54,16 @@ export default {
         },
         type: {
             type: String,
-            default: 'default',
+            default: 'primary',
             description: 'Button type (e,g primary, danger etc)',
         },
     },
     computed: {
         classes() {
             let btnClasses = [
-                { "btn-rounded": this.rounded },
                 this.type && this.outline == false ? `btn-${this.type}` : "",
-                this.outline ? `btn-${this.type}-outline` : "",
+                this.outline ? `btn-outline-${this.type}` : "",
+                { "btn__rounded": this.rounded },
             ];
             if (this.size) {
                 btnClasses.push(`btn-${this.size}`);
@@ -86,3 +78,31 @@ export default {
     }
 }
 </script>
+<style lang='scss'>
+.btn {
+    box-shadow: 0px 2px 3px 1px rgb(50 50 93 / 15%), 0 1px 0 rgb(0 0 0 / 2%) !important;
+    @include flx-center-childs;
+
+    &__icon {
+        /* width: 30px; */
+        padding-right: 10px;
+        height: inherit;
+        background-color: transparent;
+        color: inherit;
+        @include fontSize(16px);
+        @include flx-center-childs;
+    }
+
+    &__rounded {
+        border-radius: 30px;
+    }
+
+    &-sm &__icon{
+        padding-right: 7px !important;
+    }
+
+    &-lg &__icon{
+        @include fontSize(20px);
+    }
+}
+</style>

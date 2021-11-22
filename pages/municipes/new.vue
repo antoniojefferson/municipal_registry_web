@@ -35,12 +35,16 @@
                                             @updateValue="handleChangeCns" />
                                     </div>
                                     <div class="col-12 col-sm-12 col-md-3 col-lg-3 ">
-                                        <custom-input
-                                            label="Data de nascimento"
-                                            inputType='date'
-                                            mask='##/##/####'
-                                            :value="birth_date"
-                                            @updateValue="handleChangeBirthDate" />
+                                        <datetime
+                                            title='Data de nascimento'
+                                            format='dd/MM/yyyy'
+                                            placeholder='dd/mm/yyyy'
+                                            input-class='form-control theme-primary'
+                                            v-on:input="handleChangeDate"
+                                            v-model="dateTime">
+                                            <label for="startDate" slot="before">Data de nascimento</label>
+                                            <span v-if="helpTextDate && !dateOK" class="description small text-danger" slot="after">{{ helpTextDate }}</span>
+                                        </datetime>
                                     </div>
                                     <div class="col-12 col-sm-12 col-md-6 col-lg-6 ">
                                         <custom-input
@@ -60,18 +64,6 @@
                                             @blur="validPhone"
                                             :value="phone"
                                             @updateValue="handleChangePhone" />
-                                    </div>
-                                    <div class="col-12 col-sm-12 col-md-3 col-lg-3 ">
-                                        <datetime
-                                            title='Data de nascimento'
-                                            format='dd/MM/yyyy'
-                                            placeholder='dd/mm/yyyy'
-                                            input-class='form-control'
-                                            v-on:input="changeDate"
-                                            v-model="dateTime">
-                                            <label for="startDate" slot="before">Data de nascimento</label>
-                                            <span class="description" slot="after">The field description</span>
-                                        </datetime>
                                     </div>
                                 </div>
                             </div>
@@ -136,6 +128,9 @@ export default {
 
             helpTextPhone: '',
             phoneOK: undefined,
+
+            helpTextDate: '',
+            dateOK: undefined,
         }
     },
     methods: {
@@ -147,9 +142,8 @@ export default {
         handleChangePhone(str) { this.phone = str },
         handleChangePhoto(str) { this.photo = str },
         handleChangeStatus(str) { this.status = str },
-
-        changeDate(str) {
-            console.log(str)
+        handleChangeDate(str) {
+            this.birth_date = str.substring(0, 10)
         },
 
         validCpf(el) {
@@ -172,6 +166,16 @@ export default {
             } 
         },
 
+        validDate(el) {
+            this.dateOK = undefined
+            this.helpTextDate = ''
+
+            if (!this.$berthDateValidation(el.target.value)) {
+                this.dateOK = false
+                this.helpTextDate = 'Data invalida, selecione uma data valido!'
+            } 
+        },
+
         validEmail(el) {
             this.emailOK = undefined
             this.helpTextEmail = ''
@@ -191,14 +195,6 @@ export default {
                 this.helpTextPhone = 'Telefone invalido, digite um telefone valido!'
             } 
         },
-
-
-        // generateCNS() {
-        //     do {
-        //         this.cns = Math.floor(Math.random() * 1000000000000000).toString();
-        //         console.log(` CNS valid: ${this.$cnsValidation(this.cns)} - (${this.cns})`)
-        //     } while(!this.$cnsValidation(this.cns));
-        // }
     }
 }
 </script>

@@ -70,7 +70,7 @@ export default {
             return await this.$axios.$get(`${this.$axios.defaults.baseURL}/municipes`)
         },
         handleClick() {
-            alert('Teste click');
+            this.$router.push('/municipes/new');
         }
     },
     computed: {

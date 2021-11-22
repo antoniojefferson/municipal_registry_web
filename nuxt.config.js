@@ -32,6 +32,7 @@ export default {
         ]
     },
     plugins: [
+        '~/plugins/birth-date-validation.js',
         '~/plugins/cns-validation.js',
         '~/plugins/email-validation.js',
         '~/plugins/phone-validation.js',

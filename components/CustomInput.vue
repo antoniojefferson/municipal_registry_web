@@ -1,39 +1,38 @@
 <template>
-    <div class="form-group mb-2">
+    <div class="custom-input mb-2">
         <label v-if="label">
             {{ label }}
             <span v-if="required && label">*</span>
         </label>
-        <div class="input-group" :class="[
-            { 'input-group__rounded': this.rounded }
-        ]">
-            <div v-if="this.iconLeft != ''" class="input-group__icon-left" :class="[{ 'rounded': this.rounded }]">
-                <font-awesome-icon :icon="['fas', this.iconLeft]" />
+        <div class="input-group">
+            <div v-if="icon" class="input-group-prepend custom-input__prepend">
+                <span class="input-group-text custom-input__prepend-icon" :class="[
+                    { 'custom-input__prepend-icon__is-valid': valid },
+                    { 'custom-input__prepend-icon__is-invalid': valid === false },
+                    { 'custom-input__prepend-icon__focus': focused }
+                ]">
+                    <font-awesome-icon :icon="['fas', icon]" />
+                </span>
             </div>
             <input
                 v-bind="$attrs"
                 v-on="listeners"
                 v-mask="mask"
                 :maxlength="mask ? mask.length.toString() : ''"
-                :type="this.showPassword ? 'text' : this.inputType"
+                :type="inputType"
                 class='form-control'
                 :class="[
                     { 'is-valid': valid === true },
                     { 'is-invalid': valid === false },
-                    { 'rounded': this.rounded },
-                    { 'icon-left': this.iconLeft != '' },
-                    { 'icon-right': this.iconRight != '' || validIconPassword },
+                    { 'rounded': rounded },
+                    { 'icon-left': icon != '' },
                     inputClasses,
 
                 ]"
                 :placeholder="placeholder || ''"
             />
-            <div v-if="this.iconRight != '' || validIconPassword" class="input-group__icon-right">
-                <font-awesome-icon @click="handleShowPassword" :icon="['fas', validIconPassword ? this.iconPassword : this.iconRight]" />
-            </div>
+            <div class="invalid-feedback">{{ helpText }}</div>
         </div>
-        <div class="invalid-feedback">{{ helpText }}</div>
-        <!-- <small v-if="helpText" class="form-text" :class="[{ 'text-danger': valid === false },]" >{{ helpText }}</small> -->
     </div>
 </template>
 <script>
@@ -45,11 +44,7 @@ export default {
             type: String,
             description: "Input css classes",
         },
-        iconLeft: {
-            type: String,
-            default: '',
-        },
-        iconRight: {
+        icon: {
             type: String,
             default: '',
         },
@@ -72,11 +67,6 @@ export default {
             default: '',
             description: 'Pattern of characters that the v-mask plugin should convert to string'
         },
-        noMargin: {
-            type: Boolean,
-            default: false,
-            description: 'Remove all margins from component'
-        },
         placeholder: String,
         required: {
             type: Boolean,
@@ -91,18 +81,11 @@ export default {
             type: Boolean,
             default: undefined,
             description: 'Whether is valid',
-        },
-        wth100: {
-            type: Boolean,
-            default: false,
-            description: 'Adds the class that defines the 100% width on the target.'
         }
     },
     data() {
         return {
-            iconPassword: 'eye',
-            focused: false,
-            showPassword: false,
+            focused: false
         }
     },
     computed: {
@@ -112,9 +95,6 @@ export default {
                 focus: this.onFocus,
                 blur: this.onBlur,
             };
-        },
-        validIconPassword() {
-            return this.inputType === 'password' || (this.inputType !== 'password' && this.showPassword);
         }
     },
     methods: {
@@ -129,69 +109,80 @@ export default {
         onBlur(value) {
             this.focused = false;
             this.$emit("blur", value);
-        },
-        handleShowPassword() {
-            if (this.inputType === 'password') {
-                this.showPassword = !this.showPassword;
-                this.iconPassword = this.showPassword ? 'eye-slash' : 'eye'
-            }
         }
     }
 }
 </script>
 <style lang='scss'>
-    .input-group {
-        border-radius: 0.25rem;
-        border: 1px solid #ced4da;
-        transition: all 0.3s;
-
-        &__rounded {
-            border-radius: calculateRem(70px) !important;
-        }
-
-        &__icon-left, &__icon-right {
-            width: calculateRem(33px);
-            height: inherit;
-            @include fontSize(16px);
+    .custom-input {
+        &__prepend {
             display: flex;
-            align-items: center;
+        }
 
-            &.rounded {
-                border-radius: 70px 0 0 70px !important;
+        &__prepend-icon {
+            transition: all 0.3s !important;
+            border-radius: 0.25rem 0 0 0.25rem;
+            border: 1px solid #ced4da;
+            background-color: white;
+
+            &__focus {
+                border-color: $primary white $primary $primary !important;
             }
-        }
 
-        &__icon-left {
-            justify-content: end;
-            padding-right: calculateRem(2px);
-        }
+            &__is-invalid {
+                border-color: #dc3545 white #dc3545 #dc3545 !important;
+            }
 
-        &__icon-right {
-            justify-content: start;
-            padding-left: calculateRem(3px);
-        }
-
-        &:focus-within {
-            box-shadow: none !important;
-            border-color: $primary !important;
+            &__is-valid {
+                border-color: #198754 white #198754 #198754 !important;
+            }
         }
 
     }
 
     input {
+        border-radius: 0.25rem !important;
+        transition: all 0.3s !important;
         color: $default-text-color !important;
-        border: none !important;
+        box-shadow: none !important;
 
-        &.rounded {
-            border-radius: calculateRem(70px) !important;
+        &.icon-left {
+            border-radius: 0 0.25rem 0.25rem 0 !important;
+            border-color: #ced4da #ced4da #ced4da white !important;
+
+            &:focus:not(.is-invalid):not(.is-valid) {
+                border-color: $primary $primary $primary white !important;
+            }
         }
 
-        &:focus {
-            box-shadow: none !important;
+        &.icon-right {
+            border-radius: 0.25rem 0 0 0.25rem !important;
+            border-color: #ced4da white #ced4da #ced4da !important;
+
+            &:focus:not(.is-invalid):not(.is-valid) {
+                border-color: $primary white $primary $primary !important;
+            }
         }
+
+        &.icon-left.is-invalid {
+            border-color: #dc3545 #dc3545 #dc3545 white !important;
+        }
+
+        &.icon-left.is-valid {
+            border-color: #198754 #198754 #198754 white !important;
+        }
+
+        &.icon-right.is-invalid {
+            border-color: #dc3545 white #dc3545 #dc3545 !important;
+        }
+
+        &.icon-right.is-valid {
+            border-color: #198754 white #198754 #198754 !important;
+        }
+
+        /* &:focus:not(.is-invalid):not(.is-valid) {
+            border: 1px solid $primary !important;
+        } */
+        
     }
-
-    /* small {
-        font-size: 80% !important;
-    } */
 </style>

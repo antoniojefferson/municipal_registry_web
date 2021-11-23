@@ -27,8 +27,8 @@
                                         v-for="municipe in municipesList"
                                         :key="municipe.id"
                                         :name="municipe.full_name"
-                                        :cpf="municipe.cpf"
-                                        :cns='municipe.cns'
+                                        :cpf="municipe.cpf | VMask('###.###.###-##')"
+                                        :cns="municipe.cns | VMask('### #### #### ####')"
                                         :isActive="municipe.status"
                                         :image="$axios.defaults.baseURL + municipe.photo.url">
                                         <custom-button icon='edit' size='sm' @click="showModal(municipe)" />

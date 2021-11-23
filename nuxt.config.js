@@ -39,7 +39,8 @@ export default {
         '~/plugins/phone-validation.js',
         '~/plugins/v-mask.js',
         '~/plugins/vue-notification.js',
-        '~/plugins/vue-fragment.js'
+        '~/plugins/vue-fragment.js',
+        '~/plugins/date-formatting.js'
     ],
     buildModules: [],
     modules: [

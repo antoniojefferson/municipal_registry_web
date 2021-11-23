@@ -41,7 +41,7 @@
                     
                     inputType="date"
                     required
-                    :value="birth_date"
+                    :value="'2021-12-10'"
                     :valid="invalidDate"
                     :invalidText="feedbackTextDate"
                     @blur="validDate"
@@ -362,7 +362,7 @@ export default {
                 this.cpf = obj.cpf || ''
                 this.cns = obj.cns || ''
                 this.email = obj.email || ''
-                this.birth_date = obj.birth_date || ''
+                this.birth_date = this.$dateFormatting(obj.birth_date) || ''
                 this.phone = obj.phone || ''
                 this.status = obj.status || false
                 if (obj.photo) {

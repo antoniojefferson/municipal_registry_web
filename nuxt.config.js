@@ -38,7 +38,8 @@ export default {
         '~/plugins/email-validation.js',
         '~/plugins/phone-validation.js',
         '~/plugins/v-mask.js',
-        '~/plugins/vue-notification.js'
+        '~/plugins/vue-notification.js',
+        '~/plugins/vue-fragment.js'
     ],
     buildModules: [],
     modules: [

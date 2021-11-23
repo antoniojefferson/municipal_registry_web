@@ -6,7 +6,7 @@
         :class="classes"
         @click="handleClick"
         >
-        <div v-if="this.icon != ''" class="btn__icon">
+        <div v-if="this.icon != ''" class="btn__icon" :class="[{'btn__icon__no-pdg' : text == '' }]">
             <font-awesome-icon :icon="['fas', this.icon]" />
         </div>
         <slot>
@@ -84,21 +84,24 @@ export default {
     @include flx-center-childs;
 
     &__icon {
-        /* width: 30px; */
         padding-right: 10px;
         height: inherit;
         background-color: transparent;
         color: inherit;
         @include fontSize(16px);
         @include flx-center-childs;
+
+        &__no-pdg {
+            padding-right: 0 !important;
+        }
     }
 
     &__rounded {
         border-radius: 30px;
     }
 
-    &-sm &__icon{
-        padding-right: 7px !important;
+    &-sm &__icon {
+        padding-right: 7px;
     }
 
     &-lg &__icon{

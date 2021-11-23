@@ -64,7 +64,7 @@ export default {
         }
     }
     .modal-sheet {
-        width: 900px;
+        width: 90%;
         height: 550px;
         position: absolute;
         bottom: 0;
@@ -73,6 +73,10 @@ export default {
         display: flex;
         flex-direction: column;
         transition: all 0.3s ease-in-out;
+
+        @include for-desktop-only {
+            width: 70% !important;
+        }
 
         &__show {
             transform: translateY(0);

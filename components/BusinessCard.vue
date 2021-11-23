@@ -54,6 +54,13 @@ export default {
         padding: 7px;
         box-shadow: 0px 1px 7px 0px grey;
 
+        @include for-tablet-only {
+            width: 310px;
+        }
+        @include for-desktop-only {
+            width: 31%;
+        }
+
         &__is-active {
             border-left: 8px solid $primary;
         }

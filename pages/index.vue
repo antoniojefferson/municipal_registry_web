@@ -5,12 +5,12 @@
             <div class="mt--6">
                 <div class="row">
                     <div class="col">
-                        <div class="card" style="min-height: 500px">
-                            <div class="card-header card-table border-0">
-                                <div class="card-table__title">
+                        <div class="card card-main">
+                            <div class="card-header card-list border-0">
+                                <div class="card-list__title">
                                     <span>Lista de municipes</span>
                                 </div>
-                                <div class="card-table__actions">
+                                <div class="card-list__actions">
                                     <custom-button
                                         text='Novo'
                                         icon='plus-circle'
@@ -171,7 +171,11 @@ export default {
         }
     }
 
-    .card-table {
+    .card-main {
+        width: 100%;
+    }
+
+    .card-list {
         background-color: white;
         padding: 1.25rem 1.5rem !important;
         display: flex;

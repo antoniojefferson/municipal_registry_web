@@ -1,4 +1,4 @@
-@import 'fonts';
+@import 'fonts', 'vue-notification-person';
 
 html, body {
     font-family: sans-serif;
@@ -47,7 +47,7 @@ html, body {
     }
 }
 
-.small {
+.invalid-feedback {
     font-size: 80% !important;
 }
 

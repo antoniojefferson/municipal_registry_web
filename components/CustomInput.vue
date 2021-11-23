@@ -5,7 +5,7 @@
             <span v-if="required && label">*</span>
         </label>
         <div class="input-group">
-            <div v-if="icon" class="input-group-prepend custom-input__prepend">
+            <div v-if="icon && !isFileInput" class="input-group-prepend custom-input__prepend">
                 <span class="input-group-text custom-input__prepend-icon" :class="[
                     { 'custom-input__prepend-icon__is-valid': valid },
                     { 'custom-input__prepend-icon__is-invalid': valid === false },
@@ -15,12 +15,14 @@
                 </span>
             </div>
             <input
+                class='form-control'
                 v-bind="$attrs"
                 v-on="listeners"
                 v-mask="mask"
                 :maxlength="mask ? mask.length.toString() : ''"
-                :type="inputType"
-                class='form-control'
+                :type="isFileInput ? 'file' : inputType"
+                :required="required"
+                :placeholder="placeholder || ''"
                 :class="[
                     { 'is-valid': valid === true },
                     { 'is-invalid': valid === false },
@@ -29,9 +31,8 @@
                     inputClasses,
 
                 ]"
-                :placeholder="placeholder || ''"
             />
-            <div class="invalid-feedback">{{ helpText }}</div>
+            <div v-if="isFileInput || (!isFileInput && !focused)" class="invalid-feedback">{{ setInvalidFeedback }}</div>
         </div>
     </div>
 </template>
@@ -48,15 +49,20 @@ export default {
             type: String,
             default: '',
         },
-        helpText: {
+        invalidText: {
             type: String,
             default: '',
-            description: 'Help message created below the field'
+            description: 'Error text when field is invalid'
         },
         inputType: {
             type: String,
             default: 'text',
             description: 'Field type (text, email, password, etc)',
+        },
+        isFileInput: {
+            type: Boolean,
+            default: false,
+            description: 'Sets compo as input files'
         },
         label: {
             type: String,
@@ -95,11 +101,14 @@ export default {
                 focus: this.onFocus,
                 blur: this.onBlur,
             };
+        },
+        setInvalidFeedback() {
+            return this.required && this.valid != false ? 'Este campo é obrigatório' : this.invalidText
         }
     },
     methods: {
         updateValue(evt) {
-            let value = evt.target.value;
+            let value = this.isFileInput ? evt : evt.target.value;
             this.$emit('updateValue', value);
         },
         onFocus(value) {
@@ -179,10 +188,6 @@ export default {
         &.icon-right.is-valid {
             border-color: #198754 white #198754 #198754 !important;
         }
-
-        /* &:focus:not(.is-invalid):not(.is-valid) {
-            border: 1px solid $primary !important;
-        } */
         
     }
 </style>

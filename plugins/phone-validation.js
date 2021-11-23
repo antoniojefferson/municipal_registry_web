@@ -1,6 +1,6 @@
 /*
-    Validação de numeros telefonicos;
-    Referência: https://www.npmjs.com/package/validar-telefone
+    Validation in phone number;
+    Reference: https://github.com/roniemeque/validar-telefone#readme
 */
 
 import validator from "validar-telefone";

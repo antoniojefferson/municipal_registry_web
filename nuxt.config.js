@@ -34,9 +34,11 @@ export default {
     plugins: [
         '~/plugins/birth-date-validation.js',
         '~/plugins/cns-validation.js',
+        '~/plugins/cpf-validation.js',
         '~/plugins/email-validation.js',
         '~/plugins/phone-validation.js',
         '~/plugins/v-mask.js',
+        '~/plugins/vue-notification.js'
     ],
     buildModules: [],
     modules: [

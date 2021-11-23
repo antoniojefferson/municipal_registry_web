@@ -1,8 +1,8 @@
 /*
-    Validação de CNS, seundo regras de e-SUS;
-    Referência: https://integracao.esusab.ufsc.br/ledi/documentacao/regras/algoritmo_CNS.html
+    CNS validation using e-SUS rules;
+    Reference: https://integracao.esusab.ufsc.br/ledi/documentacao/regras/algoritmo_CNS.html
 
-    Obs: Algoritimos comprimidos, porém seguindo as regras estabelecidas na referência acima.
+    Obs: Compressed algorithms, but following the rules established in the reference above.
 */
 export default ({ app }, inject) => {
     // Inject $cnsValidation(cns) in Vue, context and store.
@@ -67,6 +67,4 @@ export default ({ app }, inject) => {
             }
         }
     });
-
-    
 }

@@ -10,7 +10,7 @@
                         <custom-table
                             v-if="filledList"
                             title='Lista de munícipes'
-                            :headers="['Nome', 'email', 'phone', 'cpf', 'cns', 'Nascimento', 'status']"
+                            :headers="['Nome', 'email', 'phone', 'cpf', 'cns', 'Nascimento', 'status', '']"
                             @clickNewData="handleClick"
                             >
                             <tr v-for="municipe in municipesList" :key="municipe.id">
@@ -29,6 +29,9 @@
                                     <span :class="`text-${municipe.status ? 'success' : 'danger'}`" style="font-weight: bold;">
                                         {{ municipe.status ? 'Ativo' : 'Inativo' }}
                                     </span>
+                                </td>
+                                <td>
+                                    <custom-button icon="edit" size="sm" textColor="warning" @click="handleEditing(municipe.id)" />
                                 </td>
                             </tr>
                         </custom-table>
@@ -71,6 +74,9 @@ export default {
         },
         handleClick() {
             this.$router.push('/municipes/new');
+        },
+        handleEditing(id) {
+            this.$router.push(`/municipes/${id}/edit`);
         }
     },
     computed: {

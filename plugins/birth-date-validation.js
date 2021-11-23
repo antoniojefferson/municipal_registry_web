@@ -1,8 +1,7 @@
 /*
-    Validação de data de nascimento;
-    Esta validação de data para nascimento segue os seguintes parametros:
-    - A data de nascimento não podera ser maior que a data atual, ou seja (currentDate + n) .
-    - A data não poderá ser com a quantidade em anos maior que 122, pois 122 é maior tempo de vida já registrado na historia.
+    Validation in birth date;
+    This birth date validation follows the following parameters:
+    - The date of birth cannot be greater than the current date, ie (currentDate + n).
 */
 
 export default ({ app }, inject) => {
@@ -30,23 +29,23 @@ export default ({ app }, inject) => {
             leapYear = ((year % 400) == 0 || ((year % 4) == 0 && (year % 100) != 0)) 
             validMonth =  (month > 0 && month <= 12)
 
-            // Meses com 31 dias
+            // Months with 31 days
             if([1,3,5,7,8,10,12].includes(month)) {
                 validDay = (day > 0 && day <= 31)
             }
 
-            // Meses com 30 dias
+            // Months with 30 days
             if([4,6,9,11].includes(month)) {
                 validDay = (day > 0 && day <= 30)
             }
 
-            // Fevereiro do ano bissexto ou não
+            // February of the leap year or not
             if (month == 2) {
                 let dayPlus = leapYear ? 29 : 28
                 validDay = (day > 0 && day <= dayPlus)
             }
 
-            // Vericando se o calculo de anos não está fora do comun
+            // Checking that the calculation of years is not out of the ordinary
             validYear = (currentDate.getFullYear() - year) < 122
 
         }

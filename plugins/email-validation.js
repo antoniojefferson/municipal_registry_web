@@ -1,6 +1,6 @@
 /*
-    Validação de email;
-    Referência: https://www.npmjs.com/package/email-validator
+    Validation in email;
+    Reference: https://github.com/manishsaraan/email-validator
 */
 
 import * as EmailValidator from 'email-validator';

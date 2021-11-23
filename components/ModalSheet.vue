@@ -16,7 +16,7 @@
             </div>
             <div class="modal-sheet__bottom">
                 <custom-button text="Salva" icon="save" v-on:click="$emit('save')" />
-                <custom-button text="Cancelar" icon="times" v-on:click="$emit('cancel')" />
+                <custom-button :text="'Cancelar'" icon="times" type='danger' v-on:click="$emit('cancel')" />
             </div>
         </div>
     </div>
@@ -33,6 +33,7 @@ export default {
             type:Boolean,
             default: false
         },
+        readonly:Boolean
     },
     components: {
         CustomButton,
@@ -111,6 +112,7 @@ export default {
         &__content {
             flex: 1;
             padding: 15px;
+            overflow-y: scroll;
 
         }
 

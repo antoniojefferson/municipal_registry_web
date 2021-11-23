@@ -71,6 +71,11 @@
             &__title {
                 font-weight: bold;
             }
+
+            h6 {
+                width: 80%;
+                text-align: center;
+            }
         }
 
         &__link-home {

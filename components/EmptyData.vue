@@ -1,5 +1,5 @@
 <template>
-    <div class="card card-empty-data">
+    <div class="card-empty-data">
         <div class="container-empty-data">
             <img src="~/assets/images/task_list.svg" alt="Empty Data" />
         </div>
@@ -16,7 +16,7 @@ export default {
 </script>
 <style lang="scss">
     .card-empty-data {
-        height: 450px;
+        height: 400px;
         @include flx-center-childs;
         flex-direction: column;
 
@@ -45,4 +45,5 @@ export default {
             font-family: 'NotoSans-Regular';
         }
     }
+    
 </style>

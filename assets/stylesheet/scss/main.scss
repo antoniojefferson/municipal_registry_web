@@ -1,120 +1,120 @@
 @import 'fonts', 'vue-notification-person';
 
 html, body {
-    font-family: sans-serif;
-    background-color: $background;
+  font-family: sans-serif;
+  background-color: $background;
 	color: $default-text-color;
 }
 
 #__nuxt {
-    height: 100vh;
+  height: 100vh;
 
-    #__layout {
-        height: inherit;
+  #__layout {
+    height: inherit;
 
-        .main {
-            height: inherit;
-        }
+    .main {
+      height: inherit;
     }
+  }
 }
 
 .mt--6 {
-    margin-top: -4.5rem !important;
+  margin-top: -4.5rem !important;
 }
 
 
 .media {
-    width: 45px;
-    height: 45px;
-    @include flx-center-childs;
+  width: 45px;
+  height: 45px;
+  @include flx-center-childs;
 
-    &.mr-10 {
-        margin-right: 10px;
-    }
+  &.mr-10 {
+    margin-right: 10px;
+  }
 
-    img {
-        width: inherit;
-        border-radius: 50%;
-    }
+  img {
+    width: inherit;
+    border-radius: 50%;
+  }
 }
 
 .vdatetime-input {
-    border-radius: 0.25rem !important;
-    border: 1px solid #ced4da !important;
+  border-radius: 0.25rem !important;
+  border: 1px solid #ced4da !important;
 
-    &:focus-within {
-        border-color: $primary !important;
-    }
+  &:focus-within {
+    border-color: $primary !important;
+  }
 }
 
 .invalid-feedback {
-    font-size: 80% !important;
+  font-size: 80% !important;
 }
 
 .ml-childrens-10 > *{
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .btn-primary {
-    background-color: $primary !important;
-    border-color: $primary !important;
+  background-color: $primary !important;
+  border-color: $primary !important;
 }
 .btn-secondary {
-    background-color: $secondary !important;
-    border-color: $secondary !important;
+  background-color: $secondary !important;
+  border-color: $secondary !important;
 }
 .btn-success {
-    background-color: $success !important;
-    border-color: $success !important;
+  background-color: $success !important;
+  border-color: $success !important;
 }
 .btn-info {
-    background-color: $info !important;
-    border-color: $info !important;
+  background-color: $info !important;
+  border-color: $info !important;
 }
 .btn-warning {
-    background-color: $warning !important;
-    border-color: $warning !important;
+  background-color: $warning !important;
+  border-color: $warning !important;
 }
 .btn-danger {
-    background-color: $danger !important;
-    border-color: $danger !important;
+  background-color: $danger !important;
+  border-color: $danger !important;
 }
 .btn-light {
-    background-color: $light !important;
-    border-color: $light !important;
+  background-color: $light !important;
+  border-color: $light !important;
 }
 .btn-dark {
-    background-color: $dark !important;
-    border-color: $dark !important;
+  background-color: $dark !important;
+  border-color: $dark !important;
 }
 
 .text-primary {
-    color: $primary !important;
+  color: $primary !important;
 }
 .text-secondary {
-    color: $secondary !important;
+  color: $secondary !important;
 }
 .text-success {
-    color: $success !important;
+  color: $success !important;
 }
 .text-info {
-    color: $info !important;
+  color: $info !important;
 }
 .text-warning {
-    color: $warning !important;
+  color: $warning !important;
 }
 .text-danger {
-    color: $danger !important;
+  color: $danger !important;
 }
 .text-light {
-    color: $light !important;
+  color: $light !important;
 }
 .text-dark {
-    color: $dark !important;
+  color: $dark !important;
 }
 
 .btn-check:checked + .btn-outline-primary, .btn-check:active + .btn-outline-primary, .btn-outline-primary:active, .btn-outline-primary.active, .btn-outline-primary.dropdown-toggle.show {
-    color: #fff;
-    background-color: $primary !important;
-    border-color: $primary !important;
+  color: #fff;
+  background-color: $primary !important;
+  border-color: $primary !important;
 }

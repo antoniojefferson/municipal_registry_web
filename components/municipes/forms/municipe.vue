@@ -2,7 +2,7 @@
   <div>
     <img-preview v-if="objFile.file || objFile.url" :fileObject="objFile" />
 
-    <h4>Dados do municipe</h4>
+    <h4>Dados do cidadão</h4>
     <hr />
     <div class="row mb-3">
       <div class="col-12 col-sm-12 col-md-6 col-lg-6">
@@ -93,12 +93,23 @@
       </div>
     </div>
 
-    <h4>Endereço do municipe</h4>
+    <h4>Endereço do cidadão</h4>
     <hr />
 
     <div class="row">
+      <div class="col-12 col-sm-12 col-md-3 col-lg-3">
+        <custom-input
+          id='cep'
+          label="CEP"
+          required
+          :value="cep"
+          @updateValue="setAddressByZipCode"
+          mask="#####-###"
+        />
+      </div>
       <div class="col-12 col-sm-12 col-md-6 col-lg-6">
         <custom-input
+          id='logradouro'
           label="Logradouro"
           required
           :value="logradouro"
@@ -107,6 +118,7 @@
       </div>
       <div class="col-12 col-sm-12 col-md-3 col-lg-3">
         <custom-input
+          id='complement'
           label="Complemento"
           :value="complement"
           @updateValue="complement = $event"
@@ -114,6 +126,7 @@
       </div>
       <div class="col-12 col-sm-12 col-md-3 col-lg-3">
         <custom-input
+          id='ibge_code'
           label="Code IBGE"
           :value="ibge_code"
           @updateValue="ibge_code = $event"
@@ -121,6 +134,7 @@
       </div>
       <div class="col-12 col-sm-12 col-md-3 col-lg-3">
         <custom-input
+          id='district'
           label="Bairro"
           required
           :value="district"
@@ -129,23 +143,16 @@
       </div>
       <div class="col-12 col-sm-12 col-md-4 col-lg-4">
         <custom-input
+          id='city'
           label="Cidade"
           required
           :value="city"
           @updateValue="city = $event"
         />
       </div>
-      <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-        <custom-input
-          label="CEP"
-          required
-          :value="cep"
-          @updateValue="cep = $event"
-          mask="#####-###"
-        />
-      </div>
       <div class="col-12 col-sm-12 col-md-2 col-lg-2">
         <custom-input
+          id='uf'
           label="UF"
           required
           :value="uf"
@@ -404,6 +411,47 @@ export default {
         }
       }
     },
+    async setAddressByZipCode(cep) {
+      this.cep = cep
+      let objLogradouro = document.getElementById('logradouro')
+      let objIbge_code = document.getElementById('ibge_code')
+      let objDistrict = document.getElementById('district')
+      let objCity = document.getElementById('city')
+      let objUF = document.getElementById('uf')
+      let strCep = cep.replace(/\D/g, "")
+      
+      if (strCep.length > 7) {
+        let resp = await this.$axios.$get(`https://viacep.com.br/ws/${strCep}/json/`);
+        if (resp.erro) {
+          this.logradouro = ''
+          this.complement = ''
+          this.ibge_code = ''
+          this.district = ''
+          this.city = ''
+          this.uf = ''
+
+          objLogradouro.readOnly = false
+          objIbge_code.readOnly = false
+          objDistrict.readOnly = false
+          objCity.readOnly = false
+          objUF.readOnly = false
+        } else {
+          this.logradouro = resp.logradouro
+          this.complement = resp.complemento
+          this.ibge_code = resp.ibge
+          this.district = resp.bairro
+          this.city = resp.localidade
+          this.uf = resp.uf
+
+          objLogradouro.readOnly = true
+          objIbge_code.readOnly = true
+          objDistrict.readOnly = true
+          objCity.readOnly = true
+          objUF.readOnly = true
+        }
+        console.log(resp)
+      }
+    }
   },
 };
 </script>

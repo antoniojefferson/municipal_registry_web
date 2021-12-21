@@ -1,6 +1,21 @@
 <template>
   <div>
-    <img-preview v-if="objFile.file || objFile.url" :fileObject="objFile" />
+    <img-preview 
+      :fileObject="objFile"
+      :helpText="feedbackTextPhoto"
+      :fileInvalid="invalidPhoto"
+      :changeImage="handleImageSelection" />
+
+    <div class="row">
+      <custom-input
+        id='photo'
+        idImgPreview="preview"
+        isFileInput
+        hidden
+        :required="urlImage == undefined"
+        @updateValue="handleChangeImage"
+      />
+    </div>
 
     <h4>Dados do cidadão</h4>
     <hr />
@@ -72,21 +87,11 @@
           @updateValue="phone = $event"
         />
       </div>
-      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-        <custom-input
-          label="Foto"
-          idImgPreview="preview"
-          isFileInput
-          :required="urlImage == undefined"
-          :valid="invalidPhoto"
-          :invalidText="feedbackTextPhoto"
-          @updateValue="handleChangeImage"
-        />
-      </div>
       <div class="col-12 col-sm-12 col-md-3 col-lg-3">
         <custom-check-box
           id="is-active"
-          label="Ativo"
+          text="Ativo"
+          label="Status"
           :checked="status"
           @updateValue="status = $event.checked"
         />
@@ -235,6 +240,11 @@ export default {
           this.objFile.file = undefined;
         }
       }
+    },
+
+    handleImageSelection() {
+      let photo = document.getElementById('photo')
+      photo.click()
     },
 
     validCpf() {

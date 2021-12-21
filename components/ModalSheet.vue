@@ -20,13 +20,13 @@
         <slot></slot>
       </div>
       <div class="modal-sheet__bottom">
-        <custom-button text="Salva" icon="save" v-on:click="$emit('save')" />
         <custom-button
           :text="'Cancelar'"
           icon="times"
           type="danger"
           v-on:click="$emit('cancel')"
         />
+        <custom-button text="Salvar" icon="save" v-on:click="$emit('save')" />
       </div>
     </div>
   </div>

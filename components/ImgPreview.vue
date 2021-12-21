@@ -1,11 +1,26 @@
 <template>
-  <div class="container-preview">
-    <img
-      id="imgPreview"
-      class="container-preview__image"
-      src=""
-      alt="Image Preview"
-    />
+  <div class="image-preview">
+    <div class="image-preview__selection_image" v-on:click="changeImage"
+      :class="{ 'error': fileInvalid === false }">
+      <img
+        v-if="presentImage"
+        id="imgPreview"
+        class="image-preview__selection_image__img"
+        src=""
+        alt="Image Preview"
+      />
+      <font-awesome-icon v-else :icon="['fas', 'camera']" size="4x" />
+      <span v-if="!presentImage">Click e selecione uma imagem</span>
+      <div v-else class="image-preview__selection_image__fixed">
+        <font-awesome-icon :icon="['fas', 'edit']" :style="{ color: 'white' }" />
+      </div>
+    </div>
+    <span
+      v-if="helpText"
+      class="image-preview__help-text"
+      :class="{ 'error': fileInvalid === false }">
+        {{ helpText }}
+      </span>
   </div>
 </template>
 
@@ -13,14 +28,26 @@
 export default {
   name: "img-preview",
   props: {
+    changeImage:Function,
+    fileInvalid:Boolean,
     fileObject: {
       type: Object,
       default: { file: undefined, url: undefined },
       description:
         "This object has two items, the first is 'file' of type 'FileList', the second 'url' of type 'String'",
     },
+    helpText: {
+      type: String,
+      default: '',
+      description: 'Text to help or guide the user in an action'
+    }
   },
-  mounted() {
+  computed: {
+    presentImage() {
+      return this.fileObject.file || this.fileObject.url
+    }
+  },
+  beforeUpdate() {
     if (
       this.fileObject.file &&
       this.fileObject.file[0].type.includes("image")
@@ -40,19 +67,53 @@ export default {
 </script>
 
 <style lang='scss'>
-.container-preview {
+.image-preview {
   width: 100%;
   margin-bottom: 15px;
   @include flx-center-childs;
+  flex-direction: column;
 
-  &__image {
+  &__selection_image {
+    width: 140px;
     height: 140px;
-    border: 2px solid #ced4da;
+    border: 2px solid grey;
+    border-style: dashed;
     border-radius: 6px;
-    box-shadow: 0px 1px 5px 1px #a5a7a8;
+    background-color: #efefef;
+    cursor: pointer;
+    @include flx-center-childs;
+    flex-direction: column;
+    font-size: 12px;
+    text-align: center;
 
-    @include for-desktop-only {
-      height: 180px;
+    &.error {
+      border-color: $danger;
+      color: $danger;
+    }
+
+    &__img {
+      width: 100%;
+    }
+
+    &__fixed {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: $primary;
+      position: absolute;
+      margin-right: -127px;
+      margin-bottom: -127px;
+      @include flx-center-childs;
+    }
+  }
+
+  &__help-text {
+    font-size: 14px;
+    margin-top: 7px;
+    text-align: center;
+
+    &.error {
+      color: $danger;
     }
   }
 }

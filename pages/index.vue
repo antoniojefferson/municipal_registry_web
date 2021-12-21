@@ -92,13 +92,13 @@ export default {
   methods: {
     async fetchMunicipes() {
       return await this.$axios.$get(
-        `${this.$axios.defaults.baseURL}/municipes`
+        `${this.$axios.defaults.baseURL}/citizens`
       );
     },
     handleCheck(value, municipe) {
       const componentForm = this;
       this.$axios
-        .$put(`${this.$axios.defaults.baseURL}/municipes/${municipe.id}`, {
+        .$put(`${this.$axios.defaults.baseURL}/citizens/${municipe.id}`, {
           ...municipe,
           status: value,
         })
@@ -191,8 +191,6 @@ export default {
   justify-content: space-between;
 
   &__title {
-    /* background-color: #525f7f; */
-
     span {
       font-weight: bold;
       color: #575f7f;

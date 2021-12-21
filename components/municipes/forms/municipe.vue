@@ -316,13 +316,13 @@ export default {
       formData.append("birth_date", this.birth_date);
       formData.append("phone", this.phone.replace(/\D/g, ""));
       formData.append("status", this.status);
-      formData.append("logradouro", this.logradouro);
-      formData.append("complement", this.complement);
-      formData.append("ibge_code", this.ibge_code);
-      formData.append("district", this.district);
-      formData.append("city", this.city);
-      formData.append("cep", this.cep.replace(/\D/g, ""));
-      formData.append("uf", this.uf);
+      formData.append("address_attributes[logradouro]", this.logradouro);
+      formData.append("address_attributes[complement]", this.complement);
+      formData.append("address_attributes[ibge_code]", this.ibge_code);
+      formData.append("address_attributes[district]", this.district);
+      formData.append("address_attributes[city]", this.city);
+      formData.append("address_attributes[cep]", this.cep.replace(/\D/g, ""));
+      formData.append("address_attributes[uf]", this.uf);
 
       if (this.objFile.file) {
         formData.append("photo", this.objFile.file[0]);
@@ -333,11 +333,11 @@ export default {
         form.classList.remove("was-validated");
         return (await this.idEdit)
           ? this.$axios.$put(
-              `${this.$axios.defaults.baseURL}/municipes/${this.idEdit}`,
+              `${this.$axios.defaults.baseURL}/citizens/${this.idEdit}`,
               formData
             )
           : this.$axios.$post(
-              `${this.$axios.defaults.baseURL}/municipes`,
+              `${this.$axios.defaults.baseURL}/citizens`,
               formData
             );
       } else {
@@ -393,16 +393,14 @@ export default {
           };
         }
 
-        if (obj.adress) {
-          if (obj.adress.length > 0) {
-            this.logradouro = obj.adress[0].logradouro;
-            this.complement = obj.adress[0].complement;
-            this.ibge_code = obj.adress[0].ibge_code;
-            this.district = obj.adress[0].district;
-            this.city = obj.adress[0].city;
-            this.cep = obj.adress[0].cep;
-            this.uf = obj.adress[0].uf;
-          }
+        if (obj.address) {
+          this.logradouro = obj.address.logradouro;
+          this.complement = obj.address.complement;
+          this.ibge_code = obj.address.ibge_code;
+          this.district = obj.address.district;
+          this.city = obj.address.city;
+          this.cep = obj.address.cep;
+          this.uf = obj.address.uf;
         }
       }
     },

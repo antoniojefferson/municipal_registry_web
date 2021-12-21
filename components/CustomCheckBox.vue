@@ -1,18 +1,21 @@
 <template>
-  <div class="form-check">
-    <input
-      class="form-check-input"
-      type="checkbox"
-      :required="required"
-      :id="id"
-      v-bind="$attrs"
-      v-on="listeners"
-    />
-    <label class="form-check-label" :for="id">
-      {{ label }}
-      <span v-if="required && label">*</span>
-    </label>
-    <div v-if="required" class="invalid-feedback">Este campo é obrigatório</div>
+  <div>
+    <label v-if="label">{{ label }}</label>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        :required="required"
+        :id="id"
+        v-bind="$attrs"
+        v-on="listeners"
+      />
+      <label class="form-check-label" :for="id">
+        {{ text }}
+        <span v-if="required && text">*</span>
+      </label>
+      <div v-if="required" class="invalid-feedback">Este campo é obrigatório</div>
+    </div>
   </div>
 </template>
 <script>
@@ -31,6 +34,7 @@ export default {
       type: Boolean,
       description: "Whether input is required (adds an asterix *)",
     },
+    text: String,
   },
   computed: {
     listeners() {

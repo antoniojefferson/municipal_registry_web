@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header-page title="Municipes" />
+    <header-page title="Cidadãos" />
     <div class="container">
       <div class="mt--6">
         <div class="row">
@@ -8,7 +8,7 @@
             <div class="card card-main">
               <div class="card-header card-list border-0">
                 <div class="card-list__title">
-                  <span>Lista de municipes</span>
+                  <span>Lista de ciadadãos</span>
                 </div>
                 <div class="card-list__actions">
                   <custom-button
@@ -52,7 +52,7 @@
       </div>
     </div>
     <modal-sheet
-      title="Cadastro de Municipes"
+      title="Cadastro de cidadão"
       :show="show"
       @save="saveForm"
       @cancel="closeModal"
@@ -193,7 +193,7 @@ export default {
   &__title {
     span {
       font-weight: bold;
-      color: #575f7f;
+      color: $primary;
       @include fontSize(18px);
     }
   }

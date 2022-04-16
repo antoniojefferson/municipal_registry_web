@@ -38,11 +38,16 @@
   },
   "devDependencies": {
     "@nuxtjs/style-resources": "^1.2.1",
-    "fibers": "^5.0.0",
+    "cz-conventional-changelog": "^3.3.0",
     "node-sass": "^6.0.1",
     "pug": "^3.0.2",
     "pug-plain-loader": "^1.1.0",
     "sass": "^1.43.4",
     "sass-loader": "^10.2.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

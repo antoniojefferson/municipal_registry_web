@@ -11,9 +11,6 @@
       />
       <font-awesome-icon v-else :icon="['fas', 'camera']" size="4x" />
       <span v-if="!presentImage">Click e selecione uma imagem</span>
-      <div v-else class="image-preview__selection_image__fixed">
-        <font-awesome-icon :icon="['fas', 'edit']" :style="{ color: 'white' }" />
-      </div>
     </div>
     <span
       v-if="helpText"
@@ -93,17 +90,6 @@ export default {
 
     &__img {
       width: 100%;
-    }
-
-    &__fixed {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background-color: $primary;
-      position: absolute;
-      margin-right: -127px;
-      margin-bottom: -127px;
-      @include flx-center-childs;
     }
   }
 

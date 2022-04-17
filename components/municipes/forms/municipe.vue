@@ -194,6 +194,7 @@ export default {
       phone: "",
       status: false,
 
+      idAddress: undefined,
       logradouro: "",
       complement: "",
       ibge_code: "",
@@ -270,8 +271,7 @@ export default {
     validDate() {
       this.invalidDate = undefined;
       this.feedbackTextDate = "";
-
-      if (!this.$berthDateValidation(this.birth_date)) {
+      if (this.$berthDateValidation(this.birth_date)) {
         this.invalidDate = false;
         this.feedbackTextDate = "Selecione uma data valido!";
       }
@@ -302,7 +302,7 @@ export default {
       this.validDate();
       this.validEmail();
       this.validPhone();
-
+      
       let validatedFields =
         this.invalidCpf == undefined &&
         this.invalidCns == undefined &&
@@ -314,8 +314,6 @@ export default {
       let filledFields =
         this.full_name != "" &&
         this.logradouro != "" &&
-        this.complement != "" &&
-        this.ibge_code != "" &&
         this.district != "" &&
         this.city != "" &&
         this.cep != "" &&
@@ -345,10 +343,15 @@ export default {
         formData.append("photo", this.objFile.file[0]);
       }
 
+      if (this.idEdit) {
+        formData.append("address_attributes[id]", this.idAddress);
+      }
+
       let form = document.getElementsByTagName("form")[0];
+      
       if (this.validateForm()) {
         form.classList.remove("was-validated");
-        return (await this.idEdit)
+        return await this.idEdit
           ? this.$axios.$put(
               `${this.$axios.defaults.baseURL}/citizens/${this.idEdit}`,
               formData
@@ -371,25 +374,32 @@ export default {
       this.phone = "";
       this.status = false;
 
-      (this.logradouro = ""),
-        (this.complement = ""),
-        (this.ibge_code = ""),
-        (this.district = ""),
-        (this.city = ""),
-        (this.cep = ""),
-        (this.uf = ""),
-        (this.feedbackTextCpf = ""),
-        (this.invalidCpf = undefined);
+      this.idAddress = undefined;
+      this.logradouro = "";
+      this.complement = "";
+      this.ibge_code = "";
+      this.district = "";
+      this.city = "";
+      this.cep = "";
+      this.uf = "";
+      this.feedbackTextCpf = "";
+      this.invalidCpf = undefined;
 
-      (this.feedbackTextCns = ""), (this.invalidCns = undefined);
+      this.feedbackTextCns = "";
+      this.invalidCns = undefined;
 
-      (this.feedbackTextEmail = ""), (this.invalidEmail = undefined);
+      this.feedbackTextEmail = "";
+      this.invalidEmail = undefined;
 
-      (this.feedbackTextPhone = ""), (this.invalidPhone = undefined);
+      this.feedbackTextPhone = "";
+      this.invalidPhone = undefined;
 
-      (this.feedbackTextPhoto = ""), (this.invalidPhoto = undefined);
+      this.feedbackTextPhoto = "";
+      this.invalidPhoto = undefined;
 
-      (this.feedbackTextDate = ""), (this.invalidDate = undefined);
+      this.feedbackTextDate = "";
+      this.invalidDate = undefined;
+      
       this.objFile = { file: undefined, url: undefined };
       document.querySelector("input[type=file]").value = "";
     },
@@ -411,6 +421,7 @@ export default {
         }
 
         if (obj.address) {
+          this.idAddress = obj.address.id;
           this.logradouro = obj.address.logradouro;
           this.complement = obj.address.complement;
           this.ibge_code = obj.address.ibge_code;

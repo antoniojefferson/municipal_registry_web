@@ -44,10 +44,10 @@ export default {
   },
   computed: {
     presentImage() {
-      return this.fileObject.file || this.fileObject.url
+      return (this.fileObject.file != undefined) || (this.fileObject.url != undefined)
     }
   },
-  beforeUpdate() {
+  updated() {
     if (
       this.fileObject.file &&
       this.fileObject.file[0].type.includes("image")

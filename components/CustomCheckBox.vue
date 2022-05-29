@@ -1,22 +1,20 @@
-<template>
-  <div>
-    <label v-if="label">{{ label }}</label>
-    <div class="form-check">
-      <input
+<template lang='pug'>
+  fragment
+
+    label(v-if="label") {{ label }}
+    div(class="form-check")
+      input(
         class="form-check-input"
         type="checkbox"
         :required="required"
         :id="id"
         v-bind="$attrs"
         v-on="listeners"
-      />
-      <label class="form-check-label" :for="id">
-        {{ text }}
-        <span v-if="required && text">*</span>
-      </label>
-      <div v-if="required" class="invalid-feedback">Este campo é obrigatório</div>
-    </div>
-  </div>
+      )
+      label(class="form-check-label" :for="id") {{ text }}
+        span(v-if="required && text") *
+        
+      div(v-if="required" class="invalid-feedback") Este campo é obrigatório
 </template>
 <script>
 export default {

@@ -1,35 +1,36 @@
-<template>
-  <div>
-    <img-preview 
+<template lang='pug'>
+  fragment
+    img-preview(
       :fileObject="objFile"
       :helpText="feedbackTextPhoto"
       :fileInvalid="invalidPhoto"
-      :changeImage="handleImageSelection" />
+      :changeImage="handleImageSelection"
+    )
 
-    <div class="row">
-      <custom-input
+    .row
+      custom-input(
         id='photo'
         idImgPreview="preview"
         isFileInput
         hidden
         :required="urlImage == undefined"
         @updateValue="handleChangeImage"
-      />
-    </div>
+      )
 
-    <h4>Dados do cidadão</h4>
-    <hr />
-    <div class="row mb-3">
-      <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-        <custom-input
+    h4 Dados do cidadão
+    hr
+
+    .row.mb-3
+      .col-12.col-sm-12.col-md-6.col-lg-6
+        custom-input(
           label="Nome Completo"
           required
           :value="full_name"
           @updateValue="full_name = $event"
-        />
-      </div>
-      <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-        <custom-input
+        )
+
+      .col-12.col-sm-12.col-md-3.col-lg-3
+        custom-input(
           label="CPF"
           mask="###.###.###-##"
           required
@@ -38,10 +39,10 @@
           :invalidText="feedbackTextCpf"
           @blur="validCpf"
           @updateValue="cpf = $event"
-        />
-      </div>
-      <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-        <custom-input
+        )
+
+      .col-12.col-sm-12.col-md-3.col-lg-3
+        custom-input(
           label="CNS"
           mask="### #### #### ####"
           required
@@ -50,10 +51,10 @@
           :invalidText="feedbackTextCns"
           @blur="validCns"
           @updateValue="cns = $event"
-        />
-      </div>
-      <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-        <custom-input
+        )
+
+      .col-12.col-sm-12.col-md-3.col-lg-3
+        custom-input(
           label="Data de nascimento"
           inputType="date"
           required
@@ -62,10 +63,10 @@
           :invalidText="feedbackTextDate"
           @blur="validDate"
           @updateValue="birth_date = $event"
-        />
-      </div>
-      <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-        <custom-input
+        )
+
+      .col-12.col-sm-12.col-md-6.col-lg-6
+        custom-input(
           label="Email"
           required
           :value="email"
@@ -73,10 +74,10 @@
           :invalidText="feedbackTextEmail"
           @blur="validEmail"
           @updateValue="email = $event"
-        />
-      </div>
-      <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-        <custom-input
+        )
+
+      .col-12.col-sm-12.col-md-3.col-lg-3
+        custom-input(
           label="Telefone"
           mask="(##) 9 ####-####"
           required
@@ -85,87 +86,83 @@
           @blur="validPhone"
           :value="phone"
           @updateValue="phone = $event"
-        />
-      </div>
-      <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-        <custom-check-box
+        )
+
+      .col-12.col-sm-12.col-md-3.col-lg-3
+        custom-check-box(
           id="is-active"
           text="Ativo"
           label="Status"
           :checked="status"
           @updateValue="status = $event.checked"
-        />
-      </div>
-    </div>
+        )
 
-    <h4>Endereço do cidadão</h4>
-    <hr />
+    h4 Endereço do cidadão
+    hr
 
-    <div class="row">
-      <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-        <custom-input
+    .row
+      .col-12.col-sm-12.col-md-3.col-lg-3
+        custom-input(
           id='cep'
           label="CEP"
           required
           :value="cep"
           @updateValue="setAddressByZipCode"
           mask="#####-###"
-        />
-      </div>
-      <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-        <custom-input
+        )
+
+      .col-12.col-sm-12.col-md-6.col-lg-6
+        custom-input(
           id='logradouro'
           label="Logradouro"
           required
           :value="logradouro"
           @updateValue="logradouro = $event"
-        />
-      </div>
-      <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-        <custom-input
+        )
+
+      .col-12.col-sm-12.col-md-3.col-lg-3
+        custom-input(
           id='complement'
           label="Complemento"
           :value="complement"
           @updateValue="complement = $event"
-        />
-      </div>
-      <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-        <custom-input
+        )
+
+      .col-12.col-sm-12.col-md-3.col-lg-3
+        custom-input(
           id='ibge_code'
           label="Code IBGE"
           :value="ibge_code"
           @updateValue="ibge_code = $event"
-        />
-      </div>
-      <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-        <custom-input
+        )
+
+      .col-12.col-sm-12.col-md-3.col-lg-3
+        custom-input(
           id='district'
           label="Bairro"
           required
           :value="district"
           @updateValue="district = $event"
-        />
-      </div>
-      <div class="col-12 col-sm-12 col-md-4 col-lg-4">
-        <custom-input
+        )
+
+      .col-12.col-sm-12.col-md-4.col-lg-4
+        custom-input(
           id='city'
           label="Cidade"
           required
           :value="city"
           @updateValue="city = $event"
-        />
-      </div>
-      <div class="col-12 col-sm-12 col-md-2 col-lg-2">
-        <custom-input
+        )
+
+      .col-12.col-sm-12.col-md-2.col-lg-2
+        custom-input(
           id='uf'
           label="UF"
           required
           :value="uf"
           @updateValue="uf = $event"
-        />
-      </div>
-    </div>
-  </div>
+        )
+
 </template>
 <script>
 import CustomButton from "../../CustomButton.vue";
@@ -271,7 +268,8 @@ export default {
     validDate() {
       this.invalidDate = undefined;
       this.feedbackTextDate = "";
-      if (this.$berthDateValidation(this.birth_date)) {
+      debugger
+      if (!this.$berthDateValidation(this.birth_date)) {
         this.invalidDate = false;
         this.feedbackTextDate = "Selecione uma data valido!";
       }
@@ -470,7 +468,6 @@ export default {
           objCity.readOnly = true
           objUF.readOnly = true
         }
-        console.log(resp)
       }
     }
   },

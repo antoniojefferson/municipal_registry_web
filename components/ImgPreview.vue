@@ -1,24 +1,23 @@
-<template>
-  <div class="image-preview">
-    <div class="image-preview__selection_image" v-on:click="changeImage"
-      :class="{ 'error': fileInvalid === false }">
-      <img
+<template lang='pug'>
+  .image-preview
+    .image-preview__selection_image(v-on:click="changeImage"
+      :class="{ 'error': fileInvalid === false }")
+      img(
         v-if="presentImage"
         id="imgPreview"
         class="image-preview__selection_image__img"
         src=""
         alt="Image Preview"
-      />
-      <font-awesome-icon v-else :icon="['fas', 'camera']" size="4x" />
-      <span v-if="!presentImage">Click e selecione uma imagem</span>
-    </div>
-    <span
+      )
+      font-awesome-icon(v-else :icon="['fas', 'camera']" size="4x")
+      span(v-if="!presentImage") Click e selecione uma imagem
+
+    span(
       v-if="helpText"
       class="image-preview__help-text"
-      :class="{ 'error': fileInvalid === false }">
-        {{ helpText }}
-      </span>
-  </div>
+      :class="{ 'error': fileInvalid === false }"
+    ) {{ helpText }}
+
 </template>
 
 <script>

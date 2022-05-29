@@ -1,14 +1,12 @@
-<template>
-  <div class="card-empty-data">
-    <div class="container-empty-data">
-      <img src="~/assets/images/task_list.svg" alt="Empty Data" />
-    </div>
-    <h2>Lista vazia</h2>
-    <h6>
-      Atualmente não existem dados disponíveis para a listagem, <br />
-      Adicione um novo item!
-    </h6>
-  </div>
+<template lang='pug'>
+  .card-empty-data
+    .container-empty-data
+      img(src="~/assets/images/task_list.svg" alt="Empty Data")
+
+    h2 Lista vazia
+    h6 Atualmente não existem dados disponíveis para a listagem.
+    h6 Adicione um novo item!
+
 </template>
 <script>
 export default {

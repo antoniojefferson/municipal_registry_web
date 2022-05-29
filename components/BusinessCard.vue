@@ -1,37 +1,26 @@
-<template>
-  <div
-    class="business-card"
-    :class="[
-      { 'business-card__is-active': isActive === true },
-      { 'business-card__is-inactive': isActive === false },
-    ]"
-  >
-    <div class="business-card__image">
-      <img :src="image" :alt="`Foto de ${name}`" />
-    </div>
-    <div class="business-card__content">
-      <div class="business-card__content__list">
-        <div class="business-card__content__list__item">
-          <strong>Nome:</strong>
-          <span>{{ name }}</span>
-        </div>
+<template lang='pug'>
+  .business-card(:class="statusClass")
 
-        <div class="business-card__content__list__item">
-          <strong>CPF:</strong>
-          <span>{{ cpf }}</span>
-        </div>
+    .business-card__image
+      img(:src="image" :alt="`Foto de ${name}`")
 
-        <div class="business-card__content__list__item">
-          <strong>CNS:</strong>
-          <span>{{ cns }}</span>
-        </div>
-      </div>
+    .business-card__content
+      .business-card__content__list
+        .business-card__content__list__item
+          strong Nome:
+          span {{ name }}
 
-      <div class="business-card__content__buttons">
-        <slot></slot>
-      </div>
-    </div>
-  </div>
+        .business-card__content__list__item
+          strong CPF:
+          span {{ cpf }}
+
+        .business-card__content__list__item
+          strong CNS:
+          span {{ cns }}
+
+      .business-card__content__buttons
+        slot
+
 </template>
 
 <script>
@@ -44,6 +33,11 @@ export default {
     image: String,
     isActive: Boolean,
   },
+  computed: {
+    statusClass() {
+      return `business-card__is-${this.isActive ? 'active' : 'inactive'}`
+    }
+  }
 };
 </script>
 

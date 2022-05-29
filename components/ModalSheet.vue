@@ -1,35 +1,25 @@
-<template>
-  <div
-    class="container-modal"
-    :class="[
-      { 'container-modal__show': show === true },
-      { 'container-modal__hide': show === false },
-    ]"
-  >
-    <div
-      class="modal-sheet"
-      :class="[
-        { 'modal-sheet__show': show === true },
-        { 'modal-sheet__hide': show === false },
-      ]"
-    >
-      <div class="modal-sheet__header">
-        <h5 class="modal-sheet__header__title">{{ title }}</h5>
-      </div>
-      <div class="modal-sheet__content">
-        <slot></slot>
-      </div>
-      <div class="modal-sheet__bottom">
-        <custom-button
+<template lang='pug'>
+  .container-modal(
+    :class="setContainerModalCls"
+  )
+    .modal-sheet(
+      :class="setModalSheetCls"
+    )
+      .modal-sheet__header
+        h5(class="modal-sheet__header__title") {{ title }}
+
+      .modal-sheet__content
+        slot
+
+      .modal-sheet__bottom
+        custom-button(
           :text="'Cancelar'"
           icon="times"
           type="danger"
           v-on:click="$emit('cancel')"
-        />
-        <custom-button text="Salvar" icon="save" v-on:click="$emit('save')" />
-      </div>
-    </div>
-  </div>
+        )
+        custom-button(text="Salvar" icon="save" v-on:click="$emit('save')")
+
 </template>
 
 <script>
@@ -48,6 +38,14 @@ export default {
   components: {
     CustomButton,
   },
+  computed: {
+    setContainerModalCls() {
+      return `container-modal__${this.show ? 'show' : 'hide'}`
+    },
+    setModalSheetCls() {
+      return `modal-sheet__${this.show ? 'show' : 'hide'}`
+    }
+  }
 };
 </script>
 

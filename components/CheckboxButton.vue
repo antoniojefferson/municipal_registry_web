@@ -1,23 +1,21 @@
-<template>
-  <fragment>
-    <input
+<template lang='pug'>
+  fragment
+
+    input(
       type="checkbox"
       class="btn-check btn-sm"
       autocomplete="off"
       :id="id"
       v-bind:checked="checked"
       v-on:change="$emit('change', $event.target.checked)"
-    />
-    <label
+    )
+
+    label(
       class="btn btn-sm"
-      :class="[
-        { 'btn-outline-primary': checked === true },
-        { 'btn-outline-danger': checked === false },
-      ]"
+      :class="themeClass"
       :for="id"
-      >{{ text }}</label
-    ><br />
-  </fragment>
+    ) {{ text }}
+    br
 </template>
 <script>
 export default {
@@ -27,5 +25,10 @@ export default {
     id: String,
     text: String,
   },
+  computed: {
+    themeClass() {
+      return `btn-outline-${this.checked ? 'primary' : 'danger'}`
+    }
+  }
 };
 </script>

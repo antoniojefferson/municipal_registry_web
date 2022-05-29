@@ -1,22 +1,23 @@
-<template>
-  <component
+<template lang='pug'>
+  component(
     :is="tag"
     :type="tag === 'button' ? 'button' : type"
     class="btn"
     :class="classes"
     @click="handleClick"
-  >
-    <div
+  )
+
+    div(
       v-if="this.icon != ''"
       class="btn__icon"
       :class="[{ 'btn__icon__no-pdg': text == '' }]"
-    >
-      <font-awesome-icon :icon="['fas', this.icon]" />
-    </div>
-    <slot>
-      <span>{{ text }}</span>
-    </slot>
-  </component>
+    )
+
+      font-awesome-icon(:icon="['fas', this.icon]")
+
+    slot
+      span {{ text }}
+
 </template>
 <script>
 export default {

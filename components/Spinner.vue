@@ -1,19 +1,14 @@
-<template>
-  <div class="container-spinner" v-if="show">
-    <div class="spinner-grow text-primary" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
-    <h5>{{ description }}</h5>
-  </div>
+<template lang='pug'>
+  .container-spinner
+    .spinner-grow.text-primary(role="status")
+      span(class="sr-only") Loading...
+    h5 {{ description }}
+
 </template>
 <script>
 export default {
   name: "spinner",
   props: {
-    show: {
-      type: Boolean,
-      default: false,
-    },
     description: {
       type: String,
       default: "Carregando...",

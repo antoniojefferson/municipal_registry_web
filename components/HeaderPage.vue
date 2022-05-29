@@ -1,9 +1,8 @@
-<template>
-  <div class="header-page">
-    <div class="container container-title">
-      <h4 v-once>{{ title }}</h4>
-    </div>
-  </div>
+<template lang='pug'>
+  .header-page
+    .container.container-title
+      h4(v-once) {{ title }}
+
 </template>
 <script>
 export default {

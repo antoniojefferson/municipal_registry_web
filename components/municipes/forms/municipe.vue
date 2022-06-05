@@ -13,7 +13,6 @@
         idImgPreview="preview"
         isFileInput
         hidden
-        :required="urlImage == undefined"
         @updateValue="handleChangeImage"
       )
 
@@ -233,7 +232,7 @@ export default {
           this.objFile.file = file;
         } else {
           this.feedbackTextPhoto =
-            "O Arquivo selecionado não é uma imagem, este arquivo não é valido para este form.";
+            "Este arquivo não é valido, selecione uma imagem valida.";
           this.invalidPhoto = false;
           this.objFile.file = undefined;
         }
@@ -268,10 +267,9 @@ export default {
     validDate() {
       this.invalidDate = undefined;
       this.feedbackTextDate = "";
-      debugger
       if (!this.$berthDateValidation(this.birth_date)) {
         this.invalidDate = false;
-        this.feedbackTextDate = "Selecione uma data valido!";
+        this.feedbackTextDate = "Selecione uma data valida!";
       }
     },
 
@@ -315,8 +313,7 @@ export default {
         this.district != "" &&
         this.city != "" &&
         this.cep != "" &&
-        this.uf != "" &&
-        (this.objFile.file != undefined || this.objFile.url != undefined);
+        this.uf != "";
 
       return validatedFields && filledFields;
     },
@@ -411,7 +408,7 @@ export default {
         this.birth_date = this.$dateFormatting(obj.birth_date) || "";
         this.phone = obj.phone || "";
         this.status = obj.status || false;
-        if (obj.photo) {
+        if (obj.photo.url) {
           this.objFile = {
             file: undefined,
             url: this.$axios.defaults.baseURL + obj.photo.url,
@@ -430,6 +427,7 @@ export default {
         }
       }
     },
+
     async setAddressByZipCode(cep) {
       this.cep = cep
       let objLogradouro = document.getElementById('logradouro')
@@ -468,6 +466,43 @@ export default {
           objCity.readOnly = true
           objUF.readOnly = true
         }
+      }
+    },
+    
+    setErrorsByName(name, msg) {
+      switch (name.toUpperCase()) {
+        case 'CPF':
+          this.feedbackTextCpf = msg
+          this.invalidCpf = false
+          break;
+
+        case 'CNS':
+          this.feedbackTextCns = msg
+          this.invalidCns = false
+          break;
+
+        case 'EMAIL':
+          this.feedbackTextEmail = msg
+          this.invalidEmail = false
+          break;
+
+        case 'PHONE':
+          this.feedbackTextPhone = msg
+          this.invalidPhone = false
+          break;
+
+        case 'PHOTO':
+          this.feedbackTextPhoto = msg
+          this.invalidPhoto = false
+          break;
+          
+        case 'DATE':
+          this.feedbackTextDate = msg
+          this.invalidDate = false
+          break;
+      
+        default:
+          break;
       }
     }
   },

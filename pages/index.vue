@@ -26,7 +26,7 @@
                     :cpf="municipe.cpf | VMask('###.###.###-##')"
                     :cns="municipe.cns | VMask('### #### #### ####')"
                     :isActive="municipe.status"
-                    :image="baseURL + municipe.photo.url"
+                    :image="setImageBusinessCard(municipe.photo.url)"
                   )
                     custom-button(
                       icon="edit"
@@ -135,10 +135,12 @@ export default {
           }
         })
         .catch(function (error) {
-          componentForm.$notify({
-            text: `ERROR: ${error}`,
-            type: "error",
-          });
+          debugger
+          let errorsList = error.response.data.errors.split(', ')
+          errorsList.forEach((item) => {
+            let fieldName = item.split(' ')
+            currentPage.$refs.municipeForm.setErrorsByName(fieldName[0], item)
+          })
         });
     },
     closeModal() {
@@ -149,10 +151,16 @@ export default {
       this.$refs.municipeForm.clearData();
       this.show = false;
     },
+    setImageBusinessCard(photo) {
+      return photo != null ? this.baseURL + photo : this.defaultImagePerfil
+    }
   },
   computed: {
     baseURL() {
       return this.$axios.defaults.baseURL;
+    },
+    defaultImagePerfil() {
+      return '/images/avatar-perfil.png'
     }
   },
   created() {

@@ -6,7 +6,7 @@
 import validator from "validar-telefone";
 
 export default ({ app }, inject) => {
-    // Inject $phoneValidation(phone) in Vue, context and store.
+  // Inject $phoneValidation(phone) in Vue, context and store.
 
-    inject('phoneValidation', phone => validator(phone));
+  inject('phoneValidation', phone => validator(phone));
 }

@@ -7,15 +7,15 @@
     .business-card__content
       .business-card__content__list
         .business-card__content__list__item
-          strong Nome:
+          strong Nome: 
           span {{ name }}
 
         .business-card__content__list__item
-          strong CPF:
+          strong CPF: 
           span {{ cpf }}
 
         .business-card__content__list__item
-          strong CNS:
+          strong CNS: 
           span {{ cns }}
 
       .business-card__content__buttons

@@ -347,11 +347,11 @@ export default {
         form.classList.remove("was-validated");
         return await this.idEdit
           ? this.$axios.$put(
-              `${this.$axios.defaults.baseURL}/citizens/${this.idEdit}`,
+              `${this.$axios.defaults.baseURL}/api/v1/citizens/${this.idEdit}`,
               formData
             )
           : this.$axios.$post(
-              `${this.$axios.defaults.baseURL}/citizens`,
+              `${this.$axios.defaults.baseURL}/api/v1/citizens`,
               formData
             );
       } else {

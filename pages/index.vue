@@ -82,14 +82,14 @@ export default {
   methods: {
     async fetchMunicipes() {
       return await this.$axios.$get(
-        `${this.baseURL}/citizens`
+        `${this.baseURL}/api/v1/citizens`
       );
     },
 
     handleCheck(value, municipe) {
       const componentForm = this;
       this.$axios
-        .$put(`${this.baseURL}/citizens/${municipe.id}`, {
+        .$put(`${this.baseURL}/api/v1/citizens/${municipe.id}`, {
           ...municipe,
           status: value,
         })
@@ -135,7 +135,6 @@ export default {
           }
         })
         .catch(function (error) {
-          debugger
           let errorsList = error.response.data.errors.split(', ')
           errorsList.forEach((item) => {
             let fieldName = item.split(' ')

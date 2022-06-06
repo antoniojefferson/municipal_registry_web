@@ -1,7 +1,7 @@
 <template lang='pug'>
   spinner(:show="true" v-if="inLoading")
   fragment(v-else)
-    header-page(title='Cidadãos')
+    header-page(:title="$i18n.t('page.title')")
     .container
       .mt--6
         .row
@@ -9,10 +9,10 @@
             .card.card-main
               .card-header.card-list.border-0
                 .card-list__title
-                  span Lista de cidadãos
+                  span {{ $i18n.t('list.title') }}
                 .card-list__actions
                   custom-button(
-                    text="Novo"
+                    :text="$i18n.t('list.buttons.add')"
                     icon="plus-circle"
                     size="sm"
                     @click="showModal()"
@@ -35,13 +35,13 @@
                     )
                     checkbox-button(
                       :id="`is-active-${municipe.id}`"
-                      :text="municipe.status ? 'Ativo' : 'Inativo'"
+                      :text="setLabelStatusBusinessCard(municipe.status)"
                       @change="handleCheck($event, municipe)"
                       :checked="municipe.status"
                     )
                 empty-data(v-else)
     modal-sheet(
-      title="Cadastro de cidadão"
+      :title="$i18n.t('form.title')"
       :show="show"
       @save="saveForm"
       @cancel="closeModal"
@@ -153,6 +153,9 @@ export default {
     },
     setImageBusinessCard(photo) {
       return photo != null ? this.baseURL + photo : this.defaultImagePerfil
+    },
+    setLabelStatusBusinessCard(status) {
+      return status ? this.$i18n.t('bussiness-card.labels.status.active') : this.$i18n.t('bussiness-card.labels.status.inactive')
     }
   },
   computed: {

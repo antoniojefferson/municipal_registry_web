@@ -7,15 +7,15 @@
     .business-card__content
       .business-card__content__list
         .business-card__content__list__item
-          strong Nome: 
+          strong {{ $i18n.t('bussiness-card.labels.name') }}: 
           span {{ name }}
 
         .business-card__content__list__item
-          strong CPF: 
+          strong {{ $i18n.t('bussiness-card.labels.cpf') }}: 
           span {{ cpf }}
 
         .business-card__content__list__item
-          strong CNS: 
+          strong {{ $i18n.t('bussiness-card.labels.cns') }}: 
           span {{ cns }}
 
       .business-card__content__buttons

@@ -22,7 +22,7 @@
     .row.mb-3
       .col-12.col-sm-12.col-md-6.col-lg-6
         custom-input(
-          label="Nome Completo"
+          :label="$i18n.t('form.fields.full-name.label')"
           required
           :value="full_name"
           @updateValue="full_name = $event"
@@ -30,7 +30,7 @@
 
       .col-12.col-sm-12.col-md-3.col-lg-3
         custom-input(
-          label="CPF"
+          :label="$i18n.t('form.fields.cpf.label')"
           mask="###.###.###-##"
           required
           :value="cpf"
@@ -42,7 +42,7 @@
 
       .col-12.col-sm-12.col-md-3.col-lg-3
         custom-input(
-          label="CNS"
+          :label="$i18n.t('form.fields.cns.label')"
           mask="### #### #### ####"
           required
           :value="cns"
@@ -54,7 +54,7 @@
 
       .col-12.col-sm-12.col-md-3.col-lg-3
         custom-input(
-          label="Data de nascimento"
+          :label="$i18n.t('form.fields.birth-date.label')"
           inputType="date"
           required
           :value="birth_date"
@@ -66,7 +66,7 @@
 
       .col-12.col-sm-12.col-md-6.col-lg-6
         custom-input(
-          label="Email"
+          :label="$i18n.t('form.fields.email.label')"
           required
           :value="email"
           :valid="invalidEmail"
@@ -77,7 +77,7 @@
 
       .col-12.col-sm-12.col-md-3.col-lg-3
         custom-input(
-          label="Telefone"
+          :label="$i18n.t('form.fields.phone.label')"
           mask="(##) 9 ####-####"
           required
           :valid="invalidPhone"
@@ -90,8 +90,8 @@
       .col-12.col-sm-12.col-md-3.col-lg-3
         custom-check-box(
           id="is-active"
-          text="Ativo"
-          label="Status"
+          :text="$i18n.t('form.fields.state.text')"
+          :label="$i18n.t('form.fields.state.label')"
           :checked="status"
           @updateValue="status = $event.checked"
         )
@@ -103,7 +103,7 @@
       .col-12.col-sm-12.col-md-3.col-lg-3
         custom-input(
           id='cep'
-          label="CEP"
+          :label="$i18n.t('form.fields.cep.label')"
           required
           :value="cep"
           @updateValue="setAddressByZipCode"
@@ -113,7 +113,7 @@
       .col-12.col-sm-12.col-md-6.col-lg-6
         custom-input(
           id='logradouro'
-          label="Logradouro"
+          :label="$i18n.t('form.fields.street.label')"
           required
           :value="logradouro"
           @updateValue="logradouro = $event"
@@ -122,7 +122,7 @@
       .col-12.col-sm-12.col-md-3.col-lg-3
         custom-input(
           id='complement'
-          label="Complemento"
+          :label="$i18n.t('form.fields.complement.label')"
           :value="complement"
           @updateValue="complement = $event"
         )
@@ -130,7 +130,7 @@
       .col-12.col-sm-12.col-md-3.col-lg-3
         custom-input(
           id='ibge_code'
-          label="Code IBGE"
+          :label="$i18n.t('form.fields.ibge-code.label')"
           :value="ibge_code"
           @updateValue="ibge_code = $event"
         )
@@ -138,7 +138,7 @@
       .col-12.col-sm-12.col-md-3.col-lg-3
         custom-input(
           id='district'
-          label="Bairro"
+          :label="$i18n.t('form.fields.district.label')"
           required
           :value="district"
           @updateValue="district = $event"
@@ -147,7 +147,7 @@
       .col-12.col-sm-12.col-md-4.col-lg-4
         custom-input(
           id='city'
-          label="Cidade"
+          :label="$i18n.t('form.fields.city.label')"
           required
           :value="city"
           @updateValue="city = $event"
@@ -156,7 +156,7 @@
       .col-12.col-sm-12.col-md-2.col-lg-2
         custom-input(
           id='uf'
-          label="UF"
+          :label="$i18n.t('form.fields.uf.label')"
           required
           :value="uf"
           @updateValue="uf = $event"
@@ -231,8 +231,7 @@ export default {
         if (file[0].type.includes("image")) {
           this.objFile.file = file;
         } else {
-          this.feedbackTextPhoto =
-            "Este arquivo não é valido, selecione uma imagem valida.";
+          this.feedbackTextPhoto = this.$i18n.t('image-preview.errors.invalid-file')
           this.invalidPhoto = false;
           this.objFile.file = undefined;
         }
@@ -250,7 +249,7 @@ export default {
 
       if (!this.$cpfValidation(this.cpf)) {
         this.invalidCpf = false;
-        this.feedbackTextCpf = "Digite um CPF valido!";
+        this.feedbackTextCpf = this.$i18n.t('form.fields.cpf.errors.invalid');
       }
     },
 
@@ -260,7 +259,7 @@ export default {
 
       if (!this.$cnsValidation(this.cns)) {
         this.invalidCns = false;
-        this.feedbackTextCns = "Digite um CNS valido!";
+        this.feedbackTextCns = this.$i18n.t('form.fields.cns.errors.invalid');
       }
     },
 
@@ -269,7 +268,7 @@ export default {
       this.feedbackTextDate = "";
       if (!this.$berthDateValidation(this.birth_date)) {
         this.invalidDate = false;
-        this.feedbackTextDate = "Selecione uma data valida!";
+        this.feedbackTextDate = this.$i18n.t('form.fields.birth-date.errors.invalid');
       }
     },
 
@@ -279,7 +278,7 @@ export default {
 
       if (!this.$emailValidation(this.email)) {
         this.invalidEmail = false;
-        this.feedbackTextEmail = "Digite um email valido!";
+        this.feedbackTextEmail = this.$i18n.t('form.fields.email.errors.invalid');
       }
     },
 
@@ -289,7 +288,7 @@ export default {
 
       if (!this.$phoneValidation(this.phone)) {
         this.invalidPhone = false;
-        this.feedbackTextPhone = "Digite um telefone valido!";
+        this.feedbackTextPhone = this.$i18n.t('form.fields.phone.errors.invalid');
       }
     },
     validateForm() {

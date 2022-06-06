@@ -14,7 +14,7 @@
       label(class="form-check-label" :for="id") {{ text }}
         span(v-if="required && text") *
         
-      div(v-if="required" class="invalid-feedback") Este campo é obrigatório
+      div(v-if="required" class="invalid-feedback") {{ $i18n.t('form.fields.errors.required') }}
 </template>
 <script>
 export default {

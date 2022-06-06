@@ -1,0 +1,67 @@
+page:
+  title: Cidadãos
+
+list:
+  title: Lista de cidadãos
+  buttons:
+    add: Novo
+
+bussiness-card:
+  labels:
+    name: Nome
+    cpf: CPF
+    cns: CNS
+    status:
+      active: Ativo
+      inactive: Inativo
+
+form:
+  title: Cadastro de cidadão
+  fields:
+    birth-date:
+      label: Data de Nascimento
+      errors:
+        invalid: Selecione uma data valida!
+    cep:
+      label: CEP
+    city:
+      label: Cidade
+    cns:
+      label: CNS
+      errors:
+        invalid: Digite um CNS valido!
+    cpf:
+      label: CPF
+      errors:
+        invalid: Digite um CPF valido!
+    complement:
+      label: Complemento
+    district:
+      label: Bairro
+    email:
+      label: Email
+      errors:
+        invalid: Digite um email valido!
+    full-name:
+      label: Nome Completo
+    ibge-code:
+      label: Code IBGE
+    phone:
+      label: Telefone
+      errors:
+        invalid: Digite um telefone valido!
+    state:
+      label: Status
+      text: Ativo
+    street:
+      label: Logradouro
+    uf:
+      label: UF
+    errors:
+      required: Este campo é obrigatório
+    
+
+image-preview:
+  label: Click e selecione uma imagem
+  errors:
+    invalid-file: Este arquivo não é valido, selecione uma imagem valida

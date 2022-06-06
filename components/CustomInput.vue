@@ -100,7 +100,7 @@ export default {
     },
     setInvalidFeedback() {
       return this.required && this.valid != false
-        ? "Este campo é obrigatório"
+        ? this.$i18n.t('form.fields.errors.required')
         : this.invalidText;
     },
     setClassInput() {

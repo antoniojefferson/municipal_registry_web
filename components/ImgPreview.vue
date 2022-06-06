@@ -10,7 +10,7 @@
         alt="Image Preview"
       )
       font-awesome-icon(v-else :icon="['fas', 'camera']" size="4x")
-      span(v-if="!presentImage") Click e selecione uma imagem
+      span(v-if="!presentImage") {{ $i18n.t('image-preview.label') }}
 
     span(
       v-if="helpText"

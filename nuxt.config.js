@@ -40,7 +40,8 @@ export default {
     '~/plugins/v-mask.js',
     '~/plugins/vue-notification.js',
     '~/plugins/vue-fragment.js',
-    '~/plugins/date-formatting.js'
+    '~/plugins/date-formatting.js',
+    '~/plugins/i18n.js'
   ],
   buildModules: [],
   modules: [
